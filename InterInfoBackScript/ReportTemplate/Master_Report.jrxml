@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Master_Report" pageWidth="792" pageHeight="792" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5bdf8bcd-15c1-48e2-b4f5-2b4c5672e0ce">
+	<property name="ireport.zoom" value="0.5634861006761832"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/avinash/myprojects/InterInfoBackScript/ReportTemplate/"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<field name="countryOriginMonthBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginMonthBean]]></fieldDescription>
+	</field>
+	<field name="countryOriginMonthBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginMonthBeanQty]]></fieldDescription>
+	</field>
+	<field name="countryOriginQuarterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginQuarterBean]]></fieldDescription>
+	</field>
+	<field name="countryOriginQuarterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginQuarterBeanQty]]></fieldDescription>
+	</field>
+	<field name="countryOriginSemisterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginSemisterBean]]></fieldDescription>
+	</field>
+	<field name="countryOriginSemisterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[countryOriginSemisterBeanQty]]></fieldDescription>
+	</field>
+	<field name="customPortBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customPortBean]]></fieldDescription>
+	</field>
+	<field name="customPortBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customPortBeanQty]]></fieldDescription>
+	</field>
+	<field name="customsMonthBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsMonthBean]]></fieldDescription>
+	</field>
+	<field name="customsMonthBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsMonthBeanQty]]></fieldDescription>
+	</field>
+	<field name="customsQuarterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsQuarterBean]]></fieldDescription>
+	</field>
+	<field name="customsQuarterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsQuarterBeanQty]]></fieldDescription>
+	</field>
+	<field name="customsSemisterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsSemisterBean]]></fieldDescription>
+	</field>
+	<field name="customsSemisterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[customsSemisterBeanQty]]></fieldDescription>
+	</field>
+	<field name="foreignMonthBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignMonthBean]]></fieldDescription>
+	</field>
+	<field name="foreignMonthBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignMonthBeanQty]]></fieldDescription>
+	</field>
+	<field name="foreignQuarterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignQuarterBean]]></fieldDescription>
+	</field>
+	<field name="foreignQuarterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignQuarterBeanQty]]></fieldDescription>
+	</field>
+	<field name="foreignSemBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignSemBean]]></fieldDescription>
+	</field>
+	<field name="foreignSemBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[foreignSemBeanQty]]></fieldDescription>
+	</field>
+	<field name="hsBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBean]]></fieldDescription>
+	</field>
+	<field name="hsBeanMonthQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBeanMonthQty]]></fieldDescription>
+	</field>
+	<field name="hsBeanQuarter" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBeanQuarter]]></fieldDescription>
+	</field>
+	<field name="hsBeanQuarterQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBeanQuarterQty]]></fieldDescription>
+	</field>
+	<field name="hsBeanSemister" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBeanSemister]]></fieldDescription>
+	</field>
+	<field name="hsBeanSemisterQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsBeanSemisterQty]]></fieldDescription>
+	</field>
+	<field name="hsMonthBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[hsMonthBean]]></fieldDescription>
+	</field>
+	<field name="maxicanMonthBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanMonthBean]]></fieldDescription>
+	</field>
+	<field name="maxicanMonthBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanMonthBeanQty]]></fieldDescription>
+	</field>
+	<field name="maxicanQuarterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanQuarterBean]]></fieldDescription>
+	</field>
+	<field name="maxicanQuarterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanQuarterBeanQty]]></fieldDescription>
+	</field>
+	<field name="maxicanSemisterBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanSemisterBean]]></fieldDescription>
+	</field>
+	<field name="maxicanSemisterBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[maxicanSemisterBeanQty]]></fieldDescription>
+	</field>
+	<field name="mexicanCustomPortBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[mexicanCustomPortBean]]></fieldDescription>
+	</field>
+	<field name="mexicanCustomPortBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[mexicanCustomPortBeanQty]]></fieldDescription>
+	</field>
+	<field name="mexicanSupplierBean" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[mexicanSupplierBean]]></fieldDescription>
+	</field>
+	<field name="mexicanSupplierBeanQty" class="java.util.ArrayList">
+		<fieldDescription><![CDATA[mexicanSupplierBeanQty]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39">
+			<staticText>
+				<reportElement mode="Opaque" x="233" y="0" width="286" height="31" forecolor="#010101" backcolor="#FEFEFE" uuid="8691e10e-ca9e-4e16-b696-048e3317de0a"/>
+				<textElement textAlignment="Center" markup="none">
+					<font fontName="Courier 10 Pitch" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="53">
+			<printWhenExpression><![CDATA[$F{hsMonthBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement mode="Transparent" x="0" y="0" width="752" height="53" backcolor="#C7ADE0" uuid="74d1a586-c0b2-4540-9e66-563aec7b18b3"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsMonthBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "HSMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{hsBeanQuarter}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement mode="Transparent" x="0" y="0" width="752" height="50" backcolor="#DFDFE1" uuid="ac19e59d-883d-4735-aaa1-e450b40b7415"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsBeanQuarter})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report4.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{hsBeanSemister}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="7fbffa15-82e3-4e68-aacb-eb624a2f6aa3"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsBeanSemister})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report5.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{hsBeanMonthQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="e6baa77e-e40d-49e1-86c2-bb34a590f43f"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsBeanMonthQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "HSQtyMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{hsBeanQuarterQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="2a7f19f1-6e2c-408e-89ba-4e5a52efc56e"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsBeanQuarterQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "HSQtyQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{hsBeanSemisterQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="b5c3873c-69c6-4545-b9d6-564015febd5d"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{hsBeanSemisterQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "HSQtySemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{maxicanMonthBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="ddfce994-775e-4304-b7d1-68724f32baf4"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanMonthBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report6.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{maxicanQuarterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="41147330-97ff-4ec7-bce7-d0f0b6797cca"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanQuarterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report7.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="53">
+			<printWhenExpression><![CDATA[$F{maxicanSemisterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="53" uuid="c381c856-8ed3-4071-9389-d8863331c312"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanSemisterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report8.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45">
+			<printWhenExpression><![CDATA[$F{maxicanMonthBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="44" uuid="721369af-d126-43ff-93dd-b302b0049bae"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanMonthBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MaxicanQtyMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{maxicanQuarterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="9407ba84-0dce-44b7-a863-00c538338181"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanQuarterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MaxicanQtyQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="42">
+			<printWhenExpression><![CDATA[$F{maxicanSemisterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="42" uuid="32958381-13e5-4835-b5bb-4229ea298abe"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{maxicanSemisterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MaxicanQtySemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{customsMonthBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="2" width="752" height="48" uuid="38373cbf-72d8-4b78-ac32-6e1aa6175297"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsMonthBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="47">
+			<printWhenExpression><![CDATA[$F{customsQuarterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="45" uuid="24968bb5-7681-4a42-a3ac-999038595f19"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsQuarterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{customsSemisterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="477cb0ef-d3b1-4ac1-9a01-88430f99fee3"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsSemisterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsSemisterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{customsMonthBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="1f35884e-7d10-45ac-8768-012ee18874ea"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsMonthBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsQtyMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{customsQuarterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="6c367c16-3b11-484d-bab6-0d153cb6168b"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsQuarterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsQtyQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45">
+			<printWhenExpression><![CDATA[$F{customsSemisterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="43" uuid="24cf0140-c8b9-476f-aa47-37074d9643ed"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customsSemisterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomsQtySemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="47">
+			<printWhenExpression><![CDATA[$F{countryOriginMonthBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="46" uuid="11208d47-87df-42eb-89ce-126ca9a91909"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginMonthBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountryMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{countryOriginQuarterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="b83b26cd-19c0-4e78-af1f-9af783881cc9"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginQuarterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountryQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45" splitType="Prevent">
+			<printWhenExpression><![CDATA[$F{countryOriginSemisterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="45" uuid="4577c018-dbf0-4e92-a66f-0a2ae687a149"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginSemisterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountrySemisterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="54">
+			<printWhenExpression><![CDATA[$F{countryOriginMonthBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="52" uuid="282b14ac-32a8-4d53-a26f-d16f06fa1276"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginMonthBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountryQtyMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="49">
+			<printWhenExpression><![CDATA[$F{countryOriginQuarterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="48" uuid="4535311c-6544-46b5-99e2-be8c928f0d2c"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginQuarterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountryQtyQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{countryOriginSemisterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="5" width="752" height="45" uuid="ffead3d2-baf5-4fd6-bff1-60c20a01c2ed"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{countryOriginSemisterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CountryQtySemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{foreignMonthBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="08628ec6-b4bc-4bab-a4c9-994359691f43"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignMonthBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignMonthreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{foreignQuarterBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="2b6c92b3-07a7-43a0-9d57-f7cf6b2f5117"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignQuarterBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{foreignSemBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="1" width="752" height="49" uuid="61ac1872-bfac-4a59-9323-d301df081aaf"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignSemBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignSemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{foreignMonthBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="49" uuid="fb699e3a-c5f9-4027-9a4c-34839f369e23"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignMonthBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignQtyMonthReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="54">
+			<printWhenExpression><![CDATA[$F{foreignQuarterBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="2" width="752" height="52" uuid="95165a71-e282-4659-88b4-d4003af0d350"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignQuarterBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignQtyQuarterReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{foreignSemBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="e2dc04b5-c79a-4b62-a5d9-df7988cebc84"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{foreignSemBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ForeignQtySemReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{mexicanCustomPortBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="0eabd54b-81d7-4873-903b-05e3a80345c6"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{mexicanCustomPortBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MexicanCustomPortDollarReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{mexicanCustomPortBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="e83793c5-b4d0-4f40-a9b1-4081da135116"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{mexicanCustomPortBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MexicanCustomPortQtyReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{customPortBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="eef9116f-319e-4c51-a63a-3c96ccf2ab3b"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customPortBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomPortDollarReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="55">
+			<printWhenExpression><![CDATA[$F{customPortBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="55" uuid="5f79adc1-9889-4a73-95de-1c2c51086516"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{customPortBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "CustomPortQtyReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{mexicanSupplierBean}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="48" uuid="da83fcda-4f70-4da8-b324-25ce0919a382"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{mexicanSupplierBean})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MexicanSupplierDollarReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="50">
+			<printWhenExpression><![CDATA[$F{mexicanSupplierBeanQty}!=null]]></printWhenExpression>
+			<subreport>
+				<reportElement x="0" y="0" width="752" height="50" uuid="4928f9f5-975f-44b1-b37b-06571155279a"/>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{mexicanSupplierBeanQty})]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "MexicanSupplierQtyReport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>
