@@ -4,7 +4,7 @@ public class CountryOriginMonthBean {
 	private String ccOrigDest;
 	private String year;
 	private String month;
-	private int MONTO;
+	private double MONTO;
 	public String getCcOrigDest() {
 		return ccOrigDest;
 	}
@@ -14,7 +14,7 @@ public class CountryOriginMonthBean {
 	public String getMonth() {
 		return month;
 	}
-	public int getMONTO() {
+	public double getMONTO() {
 		return MONTO;
 	}
 	public void setCcOrigDest(String ccOrigDest) {
@@ -26,7 +26,7 @@ public class CountryOriginMonthBean {
 	public void setMonth(String month) {
 		this.month = month;
 	}
-	public void setMONTO(int mONTO) {
+	public void setMONTO(double mONTO) {
 		MONTO = mONTO;
 	}
 	

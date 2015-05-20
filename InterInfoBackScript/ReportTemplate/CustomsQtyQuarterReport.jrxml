@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CustomsQtyQuarterReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="37a9a980-d70a-4454-abe7-b91dfe8e8af5">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CustomsQtyQuarterReport" printOrder="Horizontal" pageWidth="940" pageHeight="640" orientation="Landscape" columnWidth="900" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="37a9a980-d70a-4454-abe7-b91dfe8e8af5">
+	<property name="ireport.zoom" value="0.38554328942953164"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="MONTO" class="java.lang.Integer">
+	<field name="MONTO" class="java.lang.Double">
 		<fieldDescription><![CDATA[MONTO]]></fieldDescription>
 	</field>
 	<field name="border" class="java.lang.String">
@@ -22,21 +22,21 @@
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<columnHeader>
-		<band height="61" splitType="Stretch">
+	<pageHeader>
+		<band height="114">
 			<staticText>
-				<reportElement x="0" y="0" width="572" height="61" uuid="76c88689-3a34-4da6-a123-7ac9968cbfad"/>
-				<textElement>
+				<reportElement x="140" y="27" width="621" height="61" uuid="76c88689-3a34-4da6-a123-7ac9968cbfad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Customs SubReport For Quantity in Quarter]]></text>
+				<text><![CDATA[Top 20 Customs By Quarter  - Weight]]></text>
 			</staticText>
 		</band>
-	</columnHeader>
+	</pageHeader>
 	<summary>
-		<band height="42" splitType="Stretch">
+		<band height="572">
 			<crosstab>
-				<reportElement x="0" y="0" width="572" height="42" uuid="a0b0508d-008f-46fe-a6fd-33be716533cf"/>
+				<reportElement positionType="Float" x="0" y="0" width="900" height="572" uuid="a0b0508d-008f-46fe-a6fd-33be716533cf"/>
 				<rowGroup name="border" width="70" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{border}]]></bucketExpression>
@@ -48,7 +48,7 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="2428b248-23b4-4c67-8f07-85b8ae9e5dd7"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{border}]]></textFieldExpression>
@@ -80,9 +80,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="8da6693f-7764-4995-8fa7-aadbe2288218"/>
-								<textElement>
-									<font size="8"/>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="100" height="30" uuid="8da6693f-7764-4995-8fa7-aadbe2288218"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{year}]]></textFieldExpression>
 							</textField>
@@ -96,7 +96,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="50" height="60" forecolor="#FFFFFF" uuid="9baf7423-58a8-4e30-9471-b586b26b950c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Total year]]></text>
 							</staticText>
@@ -114,7 +114,7 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="09b25f55-ebb1-4a9f-aef4-c2f409c8d39a"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{month}.substring( ($V{month}.indexOf( "-" ) + 1))]]></textFieldExpression>
@@ -146,7 +146,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="b3d5cf7c-836c-4fb1-add8-a72c205a6894"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -160,7 +160,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="d445b29c-c864-4371-8ffa-9c7a70536ace"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -174,7 +174,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="c49f4602-6adc-4697-8dba-e58b652ea5f8"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -188,7 +188,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="de5063d9-4c2d-4785-9b73-e3f66c92f86e"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -202,7 +202,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="e28622ff-35d8-4ab5-a7ae-910b246419a5"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -216,7 +216,7 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="061a4a89-5e06-442f-b1ba-a07d927c09b3"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="e66a2a23-5448-4c21-9152-922bbac7ef7a">
-	<property name="ireport.zoom" value="0.8264462809917354"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report5" printOrder="Horizontal" pageWidth="1200" pageHeight="640" orientation="Landscape" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="e66a2a23-5448-4c21-9152-922bbac7ef7a">
+	<property name="ireport.zoom" value="0.35049389948139253"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
@@ -10,7 +10,7 @@
 	<field name="FRACCION" class="java.lang.String">
 		<fieldDescription><![CDATA[FRACCION]]></fieldDescription>
 	</field>
-	<field name="MONTO" class="java.lang.Integer">
+	<field name="MONTO" class="java.lang.Double">
 		<fieldDescription><![CDATA[MONTO]]></fieldDescription>
 	</field>
 	<field name="month" class="java.lang.String">
@@ -23,20 +23,20 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="48">
+		<band height="114">
 			<staticText>
-				<reportElement x="0" y="3" width="572" height="34" uuid="e5adba84-1866-420d-b475-9eba65bb2789"/>
-				<textElement textAlignment="Center">
-					<font size="28" isBold="true"/>
+				<reportElement x="301" y="40" width="559" height="34" uuid="e5adba84-1866-420d-b475-9eba65bb2789"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SubReport For HSCode Semester]]></text>
+				<text><![CDATA[Top 20 FRACCION By Semester - Dollar]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<summary>
-		<band height="42" splitType="Stretch">
+		<band height="572">
 			<crosstab>
-				<reportElement x="0" y="0" width="572" height="42" uuid="c8a9bc2d-a2cd-4354-a35c-91749b5bb963"/>
+				<reportElement positionType="Float" x="0" y="0" width="1160" height="572" uuid="c8a9bc2d-a2cd-4354-a35c-91749b5bb963"/>
 				<rowGroup name="FRACCION" width="70" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{FRACCION}]]></bucketExpression>
@@ -48,8 +48,8 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="c15daa0d-ea37-4fdf-b4ee-fe64dbc1bdea"/>
-								<textElement>
-									<font size="8"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{FRACCION}]]></textFieldExpression>
 							</textField>
@@ -63,7 +63,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="70" height="25" uuid="cf02f86c-29ca-4c0a-803f-bf4c041ad92a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="false"/>
 								</textElement>
 								<text><![CDATA[Total FRACCION]]></text>
 							</staticText>
@@ -80,9 +80,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="657f552c-7b3d-4b15-bbe1-90fc4881dc81"/>
-								<textElement>
-									<font size="8"/>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="100" height="30" uuid="657f552c-7b3d-4b15-bbe1-90fc4881dc81"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{year}]]></textFieldExpression>
 							</textField>
@@ -96,7 +96,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="50" height="60" forecolor="#FFFFFF" uuid="3d54f1c3-cb41-4b21-a9a9-37d9d7457183"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Total year]]></text>
 							</staticText>
@@ -114,8 +114,8 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="ce3a2176-28b1-4b23-923c-ff1a4432d4fb"/>
-								<textElement>
-									<font size="8"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{month}]]></textFieldExpression>
 							</textField>
@@ -129,7 +129,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="50" height="30" uuid="964f7846-0f1d-45e3-868b-f5754a4d4230"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="false"/>
 								</textElement>
 								<text><![CDATA[Total month]]></text>
 							</staticText>
@@ -146,8 +146,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="6241c7b3-637e-4774-a789-68095d207e89"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -160,8 +160,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="2e858c07-dbc9-441e-b62f-0c17c82434f8"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -174,8 +174,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="857c4360-baf5-424c-80c1-45ce3ba00f9c"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -188,8 +188,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="c7ae8f3b-590c-436f-a0d0-7b3df38a9794"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -202,8 +202,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="a7616032-8bf8-4c37-b053-246eced90c7c"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -216,8 +216,8 @@
 						</box>
 						<textField>
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="dbf9fce2-a86c-42c1-b5c3-ec1c321ea80f"/>
-							<textElement>
-								<font size="8"/>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>

@@ -16,17 +16,6 @@ public class TextData {
 		ResultSet rs;	
 		String reportName;
 		
-		public TextData(Properties prop) {
-			try {
-				conn = new MyConnection().getConnection(prop);
-			} catch (Exception e) {
-				System.out.println("Error while getting connection");
-				e.printStackTrace();
-
-			}
-		}
-
-		
 		public TextData(Properties prop, String reportName) {
 			try {
 				conn = new MyConnection().getConnection(prop);
@@ -38,12 +27,11 @@ public class TextData {
 			}
 		}
 
-
 		public void getData(Properties prop) {
 			String storagePath = prop.getProperty("reportStoragePath");
 			//String textPath = prop.getProperty("TextTemplatePath");
 			String sourceFileName = storagePath + "/"+reportName+".txt";
-			String select="select * from temp_report ";
+			String select="select * from temp_report limit 50000 ";
 				
          
 			try {

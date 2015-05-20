@@ -1,16 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HSMonthReport" printOrder="Horizontal" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="07c62ce5-ef0a-4ebe-8d50-db9ad323987a">
-	<property name="ireport.zoom" value="0.6209213230591553"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HSMonthReport" printOrder="Horizontal" pageWidth="1200" pageHeight="640" orientation="Landscape" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="07c62ce5-ef0a-4ebe-8d50-db9ad323987a">
+	<property name="ireport.zoom" value="0.45454545454545486"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table" pattern="">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="fe7d85fa-2546-4cb4-9337-5660ff546138"/>
+	<subDataset name="Table Dataset 1" uuid="7afdd9c7-8318-4d31-ab7b-7710d8d9b8d5"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
 	<field name="FRACCION" class="java.lang.String">
 		<fieldDescription><![CDATA[FRACCION]]></fieldDescription>
 	</field>
-	<field name="MONTO" class="java.lang.Integer">
+	<field name="MONTO" class="java.lang.Double">
 		<fieldDescription><![CDATA[MONTO]]></fieldDescription>
 	</field>
 	<field name="month" class="java.lang.String">
@@ -19,24 +60,22 @@
 	<field name="year" class="java.lang.String">
 		<fieldDescription><![CDATA[year]]></fieldDescription>
 	</field>
-	<background>
-		<band splitType="Stretch"/>
-	</background>
 	<pageHeader>
-		<band height="51">
+		<band height="114">
 			<staticText>
-				<reportElement x="90" y="0" width="572" height="30" backcolor="#F30A0F" uuid="bc245f20-f589-4daa-94d2-03b0e0aef81a"/>
-				<textElement textAlignment="Center">
-					<font fontName="DejaVu Serif" size="24" isBold="true" isPdfEmbedded="true"/>
+				<reportElement x="0" y="0" width="1160" height="114" backcolor="#F30A0F" uuid="bc245f20-f589-4daa-94d2-03b0e0aef81a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="24" isBold="true" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[HSCODE Sub Report For Month in Dollar]]></text>
+				<text><![CDATA[Top 20 FRACCION By Month  - Dollar ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<summary>
-		<band height="115" splitType="Stretch">
-			<crosstab>
-				<reportElement mode="Opaque" x="0" y="0" width="752" height="115" forecolor="#C1DD3F" backcolor="#FEFEFE" uuid="8e51df96-eb6a-45b0-9416-4eabd339604a"/>
+		<band height="114">
+			<crosstab ignoreWidth="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" mode="Transparent" x="0" y="0" width="1160" height="111" isPrintWhenDetailOverflows="true" backcolor="#FEFEFE" uuid="8e51df96-eb6a-45b0-9416-4eabd339604a"/>
+				<box leftPadding="6"/>
 				<rowGroup name="FRACCION" width="70" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{FRACCION}]]></bucketExpression>
@@ -47,9 +86,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" forecolor="#000000" uuid="5d003747-eb5d-4b9b-b668-dbd3702e2dac"/>
-								<textElement verticalAlignment="Middle">
-									<font fontName="DejaVu Serif" size="8"/>
+								<reportElement x="0" y="0" width="70" height="25" forecolor="#000000" uuid="5d003747-eb5d-4b9b-b668-dbd3702e2dac"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{FRACCION}]]></textFieldExpression>
 							</textField>
@@ -63,7 +102,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="70" height="25" forecolor="#000000" uuid="78d4e28e-ed72-44b1-b4c3-7d8f00418aee"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="DejaVu Serif" size="8"/>
+									<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 								</textElement>
 								<text><![CDATA[Total FRACCION]]></text>
 							</staticText>
@@ -80,9 +119,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="100" height="30" forecolor="#2FD134" backcolor="#F5191E" uuid="6143310a-d519-4058-9b5f-7857a46d6409"/>
+								<reportElement x="0" y="0" width="100" height="30" backcolor="#F5191E" uuid="6143310a-d519-4058-9b5f-7857a46d6409"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
-									<font fontName="DejaVu Serif" size="10" isBold="true"/>
+									<font fontName="DejaVu Serif" size="8" isBold="true" isStrikeThrough="false"/>
 									<paragraph lineSpacing="Single"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{year}]]></textFieldExpression>
@@ -97,7 +136,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="50" height="60" forecolor="#000000" uuid="198ec096-574d-43f5-b6de-0ba4d68ce281"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="DejaVu Serif" size="10" isBold="true"/>
+									<font fontName="DejaVu Serif" size="8" isBold="true" isStrikeThrough="false"/>
 								</textElement>
 								<text><![CDATA[Total year]]></text>
 							</staticText>
@@ -114,9 +153,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" forecolor="#000000" uuid="f036bc0c-c582-434b-b7e8-cf2cb39d17ea"/>
-								<textElement verticalAlignment="Middle">
-									<font fontName="DejaVu Serif" size="8"/>
+								<reportElement x="0" y="0" width="50" height="30" forecolor="#000000" uuid="f036bc0c-c582-434b-b7e8-cf2cb39d17ea"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{month}.substring( ($V{month}.indexOf( "-" ) + 1))]]></textFieldExpression>
 							</textField>
@@ -130,7 +169,7 @@
 							<staticText>
 								<reportElement x="0" y="0" width="50" height="30" forecolor="#000000" uuid="93f54b36-541e-44b2-88e5-baa6c302fcb9"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="DejaVu Serif" size="8"/>
+									<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 								</textElement>
 								<text><![CDATA[Total month]]></text>
 							</staticText>
@@ -146,23 +185,23 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="63dceaa4-ff30-4c5f-b9b9-759722dd8ddf"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="63dceaa4-ff30-4c5f-b9b9-759722dd8ddf"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell height="25" rowTotalGroup="FRACCION">
+				<crosstabCell width="50" height="25" rowTotalGroup="FRACCION">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="7ff5c017-2072-4049-81aa-d9016ab40908"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="7ff5c017-2072-4049-81aa-d9016ab40908"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -174,23 +213,23 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="1579247e-6e16-4683-8f88-509b181b17d7"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="1579247e-6e16-4683-8f88-509b181b17d7"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell rowTotalGroup="FRACCION" columnTotalGroup="year">
+				<crosstabCell width="50" rowTotalGroup="FRACCION" columnTotalGroup="year">
 					<cellContents backcolor="#005FB3" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="abffd5bc-62d0-434a-b97a-254ee37ead10"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="abffd5bc-62d0-434a-b97a-254ee37ead10"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -202,9 +241,9 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="e9801a03-4680-42ed-83e5-bff5b4a3a1cf"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="e9801a03-4680-42ed-83e5-bff5b4a3a1cf"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
@@ -216,9 +255,9 @@
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
 						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#000000" uuid="2ae1b776-094b-428f-aa89-8642aca17b49"/>
-							<textElement verticalAlignment="Middle">
-								<font fontName="DejaVu Serif" size="8"/>
+							<reportElement x="0" y="0" width="50" height="25" forecolor="#000000" uuid="2ae1b776-094b-428f-aa89-8642aca17b49"/>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="DejaVu Serif" size="8" isStrikeThrough="false"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MexicanCustomPortQtyReport" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="7f303420-b1eb-4c7e-ad8d-738ddca737ac">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="170"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MexicanCustomPortQtyReport" printOrder="Horizontal" pageWidth="1200" pageHeight="640" orientation="Landscape" columnWidth="1160" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="7f303420-b1eb-4c7e-ad8d-738ddca737ac">
+	<property name="ireport.zoom" value="0.35049389948139237"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<queryString>
@@ -20,20 +20,20 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="52">
+		<band height="114">
 			<staticText>
-				<reportElement x="0" y="0" width="752" height="52" uuid="51554778-8fb7-4cb4-86aa-4b2bf96efe7c"/>
-				<textElement>
+				<reportElement x="144" y="39" width="873" height="37" uuid="51554778-8fb7-4cb4-86aa-4b2bf96efe7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Mexican Custom Port SubReport In Quantity]]></text>
+				<text><![CDATA[Top 20  Mexican Companies By Custom Port  - Weight]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<summary>
-		<band height="42" splitType="Stretch">
+		<band height="572">
 			<crosstab>
-				<reportElement x="0" y="0" width="752" height="42" uuid="4ce64a10-e6e9-4938-81e7-40125935c100"/>
+				<reportElement positionType="Float" x="0" y="0" width="1160" height="572" uuid="4ce64a10-e6e9-4938-81e7-40125935c100"/>
 				<rowGroup name="maxicanCompany" width="70" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{maxicanCompany}]]></bucketExpression>
@@ -45,7 +45,7 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="8ab60e64-9fce-42af-9b6e-9409320ff530"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{maxicanCompany}]]></textFieldExpression>
@@ -77,9 +77,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="87" uuid="56357784-fa57-4675-a4ac-eda78ed23bb1"/>
-								<textElement rotation="Left">
-									<font size="8"/>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="63" height="87" uuid="56357784-fa57-4675-a4ac-eda78ed23bb1"/>
+								<textElement verticalAlignment="Middle" rotation="Left">
+									<font size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{border}]]></textFieldExpression>
 							</textField>
@@ -91,9 +91,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="50" height="87" uuid="e0c821fd-9fd2-4d45-91bc-919e6fbd3b3a"/>
+								<reportElement x="0" y="0" width="58" height="87" uuid="e0c821fd-9fd2-4d45-91bc-919e6fbd3b3a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Total border]]></text>
 							</staticText>
@@ -103,56 +103,56 @@
 				<measure name="MONTOMeasure" class="java.lang.Double" calculation="Sum">
 					<measureExpression><![CDATA[$F{MONTO}]]></measureExpression>
 				</measure>
-				<crosstabCell width="50" height="25">
+				<crosstabCell width="63" height="25">
 					<cellContents>
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="bc7734f5-2a50-4ad4-8135-a1c8654f7c70"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="63" height="25" uuid="bc7734f5-2a50-4ad4-8135-a1c8654f7c70"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell height="25" rowTotalGroup="maxicanCompany">
+				<crosstabCell width="63" height="25" rowTotalGroup="maxicanCompany">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="ac84a4c8-d988-40da-a57e-8264c630943f"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="63" height="25" uuid="ac84a4c8-d988-40da-a57e-8264c630943f"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell width="50" columnTotalGroup="border">
+				<crosstabCell width="58" columnTotalGroup="border">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="e16c2c7b-85c4-46e7-9351-f06ed389d5fa"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="58" height="25" uuid="e16c2c7b-85c4-46e7-9351-f06ed389d5fa"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell rowTotalGroup="maxicanCompany" columnTotalGroup="border">
+				<crosstabCell width="58" rowTotalGroup="maxicanCompany" columnTotalGroup="border">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="6a8dc279-6677-4b2f-957d-ca221c0074e0"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="58" height="25" uuid="6a8dc279-6677-4b2f-957d-ca221c0074e0"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>

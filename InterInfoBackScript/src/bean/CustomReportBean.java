@@ -35,6 +35,28 @@ public class CustomReportBean {
 	String natOrInternat;
 	String hsCodeLength;
 	String outputAs;
+	String userId;
+	String reportType;
+	
+	
+
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public String getReportType() {
+		return reportType;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public void setReportType(String reportType) {
+		this.reportType = reportType;
+	}
+
 	private String reportBy;
 
 	public String getReportId() {

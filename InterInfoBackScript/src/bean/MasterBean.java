@@ -40,10 +40,72 @@ public class MasterBean {
 	private ArrayList<CustomPortBean> customPortBeanQty;
 	private ArrayList<MexicanSupplierBean> mexicanSupplierBean;
 	private ArrayList<MexicanSupplierBean> mexicanSupplierBeanQty;
+	private ArrayList<HSCodeYearBean> HSCodeYearBean;
+	private ArrayList<HSCodeYearBean> HSCodeYearBeanQty;
+	private ArrayList<MexicanYearDollarBean> MexicanYearBean;
+	private ArrayList<MexicanYearDollarBean> MexicanYearBeanQty;
+	private ArrayList<CustomsYearDollarBean> CustomsYearBean;
+	private ArrayList<CustomsYearDollarBean> CustomsYearBeanQty;
+	private ArrayList<CountryYearDollarBean> CountryYearBean;
+	private ArrayList<CountryYearDollarBean> CountryYearBeanQty;
+	private ArrayList<ForeignYearBean> ForeignYearBean;
+	private ArrayList<ForeignYearBean> ForeignYearBeanQty;
 	
 	
 	
+
 	
+	public ArrayList<ForeignYearBean> getForeignYearBean() {
+		return ForeignYearBean;
+	}
+	public ArrayList<ForeignYearBean> getForeignYearBeanQty() {
+		return ForeignYearBeanQty;
+	}
+	public void setForeignYearBean(ArrayList<ForeignYearBean> foreignYearBean) {
+		ForeignYearBean = foreignYearBean;
+	}
+	public void setForeignYearBeanQty(ArrayList<ForeignYearBean> foreignYearBeanQty) {
+		ForeignYearBeanQty = foreignYearBeanQty;
+	}
+	public ArrayList<CountryYearDollarBean> getCountryYearBean() {
+		return CountryYearBean;
+	}
+	public ArrayList<CountryYearDollarBean> getCountryYearBeanQty() {
+		return CountryYearBeanQty;
+	}
+	public void setCountryYearBean(ArrayList<CountryYearDollarBean> countryYearBean) {
+		CountryYearBean = countryYearBean;
+	}
+	public void setCountryYearBeanQty(
+			ArrayList<CountryYearDollarBean> countryYearBeanQty) {
+		CountryYearBeanQty = countryYearBeanQty;
+	}
+	public ArrayList<CustomsYearDollarBean> getCustomsYearBean() {
+		return CustomsYearBean;
+	}
+	public ArrayList<CustomsYearDollarBean> getCustomsYearBeanQty() {
+		return CustomsYearBeanQty;
+	}
+	public void setCustomsYearBean(ArrayList<CustomsYearDollarBean> customsYearBean) {
+		CustomsYearBean = customsYearBean;
+	}
+	public void setCustomsYearBeanQty(
+			ArrayList<CustomsYearDollarBean> customsYearBeanQty) {
+		CustomsYearBeanQty = customsYearBeanQty;
+	}
+	public ArrayList<MexicanYearDollarBean> getMexicanYearBean() {
+		return MexicanYearBean;
+	}
+	public ArrayList<MexicanYearDollarBean> getMexicanYearBeanQty() {
+		return MexicanYearBeanQty;
+	}
+	public void setMexicanYearBean(ArrayList<MexicanYearDollarBean> mexicanYearBean) {
+		MexicanYearBean = mexicanYearBean;
+	}
+	public void setMexicanYearBeanQty(
+			ArrayList<MexicanYearDollarBean> mexicanYearBeanQty) {
+		MexicanYearBeanQty = mexicanYearBeanQty;
+	}
 	public ArrayList<MexicanCustomPortBean> getMexicanCustomPortBean() {
 		return mexicanCustomPortBean;
 	}
@@ -289,5 +351,18 @@ public class MasterBean {
 			ArrayList<CountryOriginSemisterBean> countryOriginSemisterBeanQty) {
 		CountryOriginSemisterBeanQty = countryOriginSemisterBeanQty;
 	}
+	public ArrayList<HSCodeYearBean> getHSCodeYearBean() {
+		return HSCodeYearBean;
+	}
+	public void setHSCodeYearBean(ArrayList<HSCodeYearBean> hSCodeYearBean) {
+		HSCodeYearBean = hSCodeYearBean;
+	}
+	public ArrayList<HSCodeYearBean> getHSCodeYearBeanQty() {
+		return HSCodeYearBeanQty;
+	}
+	public void setHSCodeYearBeanQty(ArrayList<HSCodeYearBean> hSCodeYearBeanQty) {
+		HSCodeYearBeanQty = hSCodeYearBeanQty;
+	}
+	
 	
 }

@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CommonNc" pageWidth="2400" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="2400" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="d13b21d5-72e7-4425-a74b-8e0addb6ff4d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="315"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.export.xls.wrap.text" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.collapse.row.span" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.rows" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.cell.border" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.white.page.background" value="false"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.ignore.graphics" value="false"/>
+	<property name="net.sf.jasperreports.text.truncate.at.char" value="false"/>
+	<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.break.after.row" value="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="ACTIVIDAD" class="java.lang.String">
+		<fieldDescription><![CDATA[ACTIVIDAD]]></fieldDescription>
+	</field>
+	<field name="CP" class="java.lang.String">
+		<fieldDescription><![CDATA[CP]]></fieldDescription>
+	</field>
+	<field name="DIRECCION" class="java.lang.String">
+		<fieldDescription><![CDATA[DIRECCION]]></fieldDescription>
+	</field>
+	<field name="EJERCICIO" class="java.lang.String">
+		<fieldDescription><![CDATA[EJERCICIO]]></fieldDescription>
+	</field>
+	<field name="ESTADO" class="java.lang.String">
+		<fieldDescription><![CDATA[ESTADO]]></fieldDescription>
+	</field>
+	<field name="EXTRANJERO" class="java.lang.String">
+		<fieldDescription><![CDATA[EXTRANJERO]]></fieldDescription>
+	</field>
+	<field name="ID_FISCAL" class="java.lang.String">
+		<fieldDescription><![CDATA[ID_FISCAL]]></fieldDescription>
+	</field>
+	<field name="LA_EMPRESA" class="java.lang.String">
+		<fieldDescription><![CDATA[LA_EMPRESA]]></fieldDescription>
+	</field>
+	<field name="MUNICIPIO" class="java.lang.String">
+		<fieldDescription><![CDATA[MUNICIPIO]]></fieldDescription>
+	</field>
+	<field name="NACIONALIDAD" class="java.lang.String">
+		<fieldDescription><![CDATA[NACIONALIDAD]]></fieldDescription>
+	</field>
+	<field name="PERIODO" class="java.lang.String">
+		<fieldDescription><![CDATA[PERIODO]]></fieldDescription>
+	</field>
+	<field name="PIAS" class="java.lang.String">
+		<fieldDescription><![CDATA[PIAS]]></fieldDescription>
+	</field>
+	<field name="RAZON_SOCIAL" class="java.lang.String">
+		<fieldDescription><![CDATA[RAZON_SOCIAL]]></fieldDescription>
+	</field>
+	<field name="TIENE_COMO_PROVEEDOR_A" class="java.lang.String">
+		<fieldDescription><![CDATA[TIENE_COMO_PROVEEDOR_A]]></fieldDescription>
+	</field>
+	<field name="TIPO_OPERACION" class="java.lang.String">
+		<fieldDescription><![CDATA[TIPO_OPERACION]]></fieldDescription>
+	</field>
+	<field name="TIPO_TERCERO" class="java.lang.String">
+		<fieldDescription><![CDATA[TIPO_TERCERO]]></fieldDescription>
+	</field>
+	<field name="VALOR_0" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_0]]></fieldDescription>
+	</field>
+	<field name="VALOR_10" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_10]]></fieldDescription>
+	</field>
+	<field name="VALOR_15" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_15]]></fieldDescription>
+	</field>
+	<field name="VALOR_EXENTO" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_EXENTO]]></fieldDescription>
+	</field>
+	<field name="VALOR_IMP_BYS_10" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_IMP_BYS_10]]></fieldDescription>
+	</field>
+	<field name="VALOR_IMP_BYS_15" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_IMP_BYS_15]]></fieldDescription>
+	</field>
+	<field name="VALOR_IMP_BYS_EXENTO" class="java.lang.String">
+		<fieldDescription><![CDATA[VALOR_IMP_BYS_EXENTO]]></fieldDescription>
+	</field>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#80797E" uuid="afbacb93-376d-43bd-817a-56e85df279ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[LA EMPRESA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="0" width="100" height="20" backcolor="#80797E" uuid="4abf1bd9-8228-413c-860c-6d1de972f97a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[EJERCICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="200" y="0" width="100" height="20" backcolor="#80797E" uuid="4156c304-af17-4ca3-91c9-637630ca509d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PERIODO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="0" width="100" height="20" backcolor="#80797E" uuid="b08c5757-6bd1-476e-a16f-eaa2c1445b60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TIPO TERCERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="400" y="0" width="100" height="20" backcolor="#80797E" uuid="cedc2776-6039-41f1-b839-c9f6b164efb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TIPO OPERACIÓN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="500" y="0" width="100" height="20" backcolor="#80797E" uuid="402c64da-0648-4677-94ca-50ca963b2b4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TIENE COMO PROVEEDOR A…]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="600" y="0" width="100" height="20" backcolor="#80797E" uuid="3b0d935b-ba23-4077-96f5-30f14021d25e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[RAZON SOCIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="700" y="0" width="100" height="20" backcolor="#80797E" uuid="671a6344-8224-40eb-8e03-ec39b1c77318"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DIRECCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="800" y="0" width="100" height="20" backcolor="#80797E" uuid="738f6dd0-9c2c-4d2c-8533-7a456acb7559"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[CP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="900" y="0" width="100" height="20" backcolor="#80797E" uuid="e8723427-d63b-443b-bc78-f2579f83f1e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MUNICIPIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1000" y="0" width="100" height="20" backcolor="#80797E" uuid="99a76276-5a26-4178-acd9-1222a4d7d07c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1100" y="0" width="100" height="20" backcolor="#80797E" uuid="5842ef80-c336-4d52-b571-42b60c4ef55e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ACTIVIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1200" y="0" width="100" height="20" backcolor="#80797E" uuid="324443b0-7212-440a-ab2e-f96703a90099"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[ID FISCAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1300" y="0" width="100" height="20" backcolor="#80797E" uuid="a627d703-4655-42e6-8f5e-f690db63b24a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[EXTRANJERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1400" y="0" width="100" height="20" backcolor="#80797E" uuid="2621e590-803f-418d-8316-75b39cd8e9b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PIAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1500" y="0" width="100" height="20" backcolor="#80797E" uuid="7be70b1d-3c73-4ab1-9c6b-b29ccca18897"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NACIONALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1600" y="0" width="100" height="20" backcolor="#80797E" uuid="8448c874-3147-4a9e-a03c-51ce65ab86ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR 15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1700" y="0" width="100" height="20" backcolor="#80797E" uuid="e0ed6d0c-9378-4655-9ef3-c8cb41c17b79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1800" y="0" width="100" height="20" backcolor="#80797E" uuid="153ddfd2-f431-47dc-8b88-90ddfe8c203b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR IMP BYS 15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1900" y="0" width="100" height="20" backcolor="#80797E" uuid="59eda09e-1083-4c00-b584-b415e3200590"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR IMP BYS 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2000" y="0" width="100" height="20" backcolor="#80797E" uuid="a0a14b07-981d-4190-ba3e-68f5f5900740"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR IMP BYS EXENTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2100" y="0" width="100" height="20" backcolor="#80797E" uuid="cb5916ef-06df-461c-ad4a-5bb61e295ae6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR 0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2200" y="0" width="100" height="20" backcolor="#80797E" uuid="bfc5cdb2-528a-4501-bf7a-2845344a7f09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[VALOR EXENTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="500" y="0" width="100" height="20" backcolor="#6576C1" uuid="bc606aba-16ba-4f15-8532-9d14b8149fdc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LA_EMPRESA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="100" y="0" width="100" height="20" backcolor="#6576C1" uuid="50e2e760-d636-41be-87a1-e643620096a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EJERCICIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="200" y="0" width="100" height="20" backcolor="#6576C1" uuid="d8928614-6b90-46c6-9d78-2e43228cd356"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PERIODO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="300" y="0" width="100" height="20" backcolor="#6576C1" uuid="34f6877a-5a14-40a8-918c-3935dcede025"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TIPO_TERCERO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="400" y="0" width="100" height="20" backcolor="#6576C1" uuid="84dbd27c-b0c8-46a4-b27a-5df3bd98148f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TIPO_OPERACION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="600" y="0" width="100" height="20" backcolor="#6576C1" uuid="1a618dea-659e-4219-83e7-92c7a835eda1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{RAZON_SOCIAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="700" y="0" width="100" height="20" backcolor="#6576C1" uuid="3a46ea14-52e4-430a-bd03-5858603cc4a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DIRECCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="800" y="0" width="100" height="20" backcolor="#6576C1" uuid="7862d0d3-3bd1-4548-aea5-9eafe4611851"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="900" y="0" width="100" height="20" backcolor="#6576C1" uuid="a1f40d30-18c2-4864-a89e-dd5d01919ed2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MUNICIPIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1000" y="0" width="100" height="20" backcolor="#6576C1" uuid="e3482e78-8f25-436e-b4dd-febb07cbfd8c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1100" y="0" width="100" height="20" backcolor="#6576C1" uuid="5e60ed91-fc9d-4723-9c95-68bfa4d56a6d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ACTIVIDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1200" y="0" width="100" height="20" backcolor="#6576C1" uuid="4073bcbb-250e-4ffa-98c6-af59f041e196"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ID_FISCAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1300" y="0" width="100" height="20" backcolor="#6576C1" uuid="c665ae84-9629-43dd-bdf4-020c71d4b97f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{EXTRANJERO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1400" y="0" width="100" height="20" backcolor="#6576C1" uuid="6d38b19b-c3e7-40f2-a572-b05bf9089058"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PIAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1500" y="0" width="100" height="20" backcolor="#6576C1" uuid="8aae87f9-c771-4e48-b605-709e4e56947d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NACIONALIDAD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1600" y="0" width="100" height="20" backcolor="#6576C1" uuid="217a82dc-1746-4ae9-abcb-3e712d483007"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1700" y="0" width="100" height="20" backcolor="#6576C1" uuid="ad160a26-e78f-4dea-972f-32c55de7c3a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1800" y="0" width="100" height="20" backcolor="#6576C1" uuid="4d4a15a9-61e6-4030-9645-7c697b497ace"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_IMP_BYS_15}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="1900" y="0" width="100" height="20" backcolor="#6576C1" uuid="407544ee-6029-4e49-8bd0-b540e35f3f7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_IMP_BYS_10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="2000" y="0" width="100" height="20" backcolor="#6576C1" uuid="d9b03dbc-1c83-414a-bb4a-10e2ccab0634"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_IMP_BYS_EXENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="2100" y="0" width="100" height="20" backcolor="#6576C1" uuid="9778efa1-7cef-4e23-8023-1b77a689e3b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_0}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="2200" y="0" width="100" height="20" backcolor="#6576C1" uuid="4bbd8295-d381-430e-93a2-2fb5851f4853"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{VALOR_EXENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="100" height="20" backcolor="#6576C1" uuid="4a4fa370-9e28-49f8-9c22-1a416b6f9021"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TIENE_COMO_PROVEEDOR_A}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

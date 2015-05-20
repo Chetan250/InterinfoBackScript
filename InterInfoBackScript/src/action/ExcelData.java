@@ -9,7 +9,11 @@ import java.util.Properties;
 
 import connection.MyConnection;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -33,7 +37,7 @@ public class ExcelData {
 
 	public ExcelData(Properties prop, String reportName) {
 		try {
-			this.reportName = reportName;
+			this.reportName = reportName.replace(" ", "");
 			conn = new MyConnection().getConnection(prop);
 		} catch (Exception e) {
 			System.out.println("Error while getting connection");
@@ -44,132 +48,144 @@ public class ExcelData {
 
 	public void getExcelData(Properties prop) {
 
-		String excelquery = "select * from temp_report";
+		String excelquery = "select * from temp_report limit 50000";
 //		String excelPath = prop.getProperty("ExcelTemplatePath");
 		String storagePath = prop.getProperty("reportStoragePath");
-		String sourceFileName = storagePath + "/"+reportName+".xlsx";
+		System.out.println(reportName+"   "+storagePath);
+		String sourceFileName = storagePath +"/"+reportName+".xlsx";
 		try {
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(excelquery);
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet spreadsheet = workbook.createSheet("sheet");
-			XSSFRow row = spreadsheet.createRow(1);
+			XSSFRow row = spreadsheet.createRow(0);
 			XSSFCell cell;
-			cell = row.createCell(1);
+		       XSSFCellStyle my_style = workbook.createCellStyle();
+			  // XSSFFont my_font=workbook.createFont();
+			    my_style.setFillForegroundColor(XSSFCellStyle.ALIGN_GENERAL);
+		        my_style.setFillPattern(HSSFCellStyle.BORDER_MEDIUM);
+		       // my_style.setBorderTop((short) 1); // single line border
+		       // my_style.setBorderBottom((short) 1);
+		       // my_style.setBorderLeft((short) 1);
+		       // my_style.setBorderRight((short) 1);
+		        
+		       // my_font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+              //  my_style.setFont(my_font);
+		        
+		        XSSFCellStyle style = workbook.createCellStyle();
+		        style.setFillForegroundColor(IndexedColors.LIGHT_CORNFLOWER_BLUE.getIndex());
+		        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+          
+           
+			cell = row.createCell(0);
 			cell.setCellValue("IE");
-			cell = row.createCell(2);
-			cell.setCellValue("Name");
-			cell = row.createCell(3);
-			cell.setCellValue("TaxNumber");
-			cell = row.createCell(4);
-			cell.setCellValue("Border");
-			cell = row.createCell(5);
-			cell.setCellValue("Date");
-			cell = row.createCell(6);
-			cell.setCellValue("CANTIDAD");
-			cell = row.createCell(7);
-			cell.setCellValue("MONTO");
-			cell = row.createCell(8);
-			cell.setCellValue("rigimen");
-			cell = row.createCell(9);
-			cell.setCellValue("medio_transporte_esp");
-			cell = row.createCell(10);
-			cell.setCellValue("ccOrigDest");
-			cell = row.createCell(11);
-			cell.setCellValue("ccBuyerSeller");
-			cell = row.createCell(12);
-			cell.setCellValue("regulation");
-			cell = row.createCell(13);
-			cell.setCellValue("merDest");
-			cell = row.createCell(14);
-			cell.setCellValue("FRACCION");
-			cell = row.createCell(15);
-			cell.setCellValue("hscode_description");
-			
-			
-			/*
-			 *   (IE, name, taxnumber, border,"
-       date, CANTIDAD,MONTO,
-       regimen, medio_transporte_esp,
-       ccOrigDest,"
-       ccBuyerSeller,regulation,
-       merDest, FRACCION, 
-       hscode_description)" 
-			 * cell=row.createCell(3); cell.setCellValue("refresh_date");
-			 * cell=row.createCell(4); cell.setCellValue("refresh_month");
-			 * cell=row.createCell(5); cell.setCellValue("year");
-			 * cell=row.createCell(6); cell.setCellValue("created_date");
-			 * cell=row.createCell(7); cell.setCellValue("modified_date");
-			 * cell=row.createCell(8); cell.setCellValue("import_export");
-			 * cell=row.createCell(9); cell.setCellValue("taxno_company");
-			 * cell=row.createCell(10); cell.setCellValue("from_date");
-			 * cell=row.createCell(11); cell.setCellValue("to_date");
-			 * cell=row.createCell(12); cell.setCellValue("hscode");
-			 * cell=row.createCell(13);
-			 * cell.setCellValue("value_range_by_doller");
-			 * cell=row.createCell(14);
-			 * cell.setCellValue("value_range_by_quantity");
-			 * cell=row.createCell(15); cell.setCellValue("supplier");
-			 * cell=row.createCell(16); cell.setCellValue("border");
-			 * cell=row.createCell(17); cell.setCellValue("motion_key");
-			 * cell=row.createCell(18); cell.setCellValue("regimes");
-			 * cell=row.createCell(19); cell.setCellValue("transportation");
-			 * cell=row.createCell(20);
-			 * cell.setCellValue("origin_destination_country_code");
-			 * cell=row.createCell(21);
-			 * cell.setCellValue("buyer_seller_country_code");
-			 * cell=row.createCell(22); cell.setCellValue("bounded_warehouse");
-			 * cell=row.createCell(23); cell.setCellValue("identifiers");
-			 * cell=row.createCell(24);
-			 * cell.setCellValue("regulation_restriction");
-			 * cell=row.createCell(25); cell.setCellValue("container_type");
-			 * cell=row.createCell(26); cell.setCellValue("billing");
-			 * cell=row.createCell(27);
-			 * cell.setCellValue("merchandise_destination");
-			 * cell=row.createCell(28); cell.setCellValue("bar_code");
-			 * cell=row.createCell(29);
-			 * cell.setCellValue("starategic_fiscal_area");
-			 * cell=row.createCell(30); cell.setCellValue("nat_or_internat");
-			 * cell=row.createCell(31); cell.setCellValue("hs_code_length");
-			 */
-			int i = 2;
-			while (rs.next()) {				
-			row = spreadsheet.createRow(i);
+            cell.setCellStyle(my_style);
 			cell = row.createCell(1);
-			  cell.setCellValue(rs.getString(1));
-			  cell = row.createCell(2);
-			  cell.setCellValue(rs.getString(2));
-			  cell=row.createCell(3);
-			  cell.setCellValue(rs.getString(3));
-			  cell=row.createCell(4);
-			  cell.setCellValue(rs.getString(4));
-			  cell=row.createCell(5);
-			  cell.setCellValue(rs.getString(5));
-			  cell=row.createCell(6);
-			  cell.setCellValue(rs.getString(6));
-			  cell=row.createCell(7);
-			  cell.setCellValue(rs.getString(7));
-			  cell=row.createCell(8);
-			  cell.setCellValue(rs.getString(8));
-			  cell=row.createCell(9);
-			  cell.setCellValue(rs.getString(9));
-			  cell=row.createCell(10);
-			  cell.setCellValue(rs.getString(10));
-			  cell=row.createCell(11);
-			  cell.setCellValue(rs.getString(11));
-			  cell=row.createCell(12);
-			  cell.setCellValue(rs.getString(12));
-			  cell=row.createCell(13);
-			  cell.setCellValue(rs.getString(13));
-			  cell=row.createCell(14);
-			  cell.setCellValue(rs.getString(14));
-			  cell=row.createCell(15);
-			  cell.setCellValue(rs.getString(15));
+			cell.setCellValue("FRACCION");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(2);
+			cell.setCellValue("CANTIDAD");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(3);
+			cell.setCellValue("MONTO");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(4);
+			cell.setCellValue("TaxNumber");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(5);
+			cell.setCellValue("Supplier");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(6);
+			cell.setCellValue("Customs");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(7);
+			cell.setCellValue("Date");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(8);
+			cell.setCellValue("Origin");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(9);
+			cell.setCellValue("RUTA");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(10);
+			cell.setCellValue("Regulation");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(11);
+			cell.setCellValue("Destination");
+			cell.setCellStyle(my_style);
+			cell = row.createCell(12);
+			cell.setCellValue("FRACCION Desc");
+			 cell.setCellStyle(my_style);
+			cell = row.createCell(13);
+			cell.setCellValue("Regimen");
+			 cell.setCellStyle(my_style);
+			cell = row.createCell(14);
+			cell.setCellValue("Transporte");
+			 cell.setCellStyle(my_style);
+			cell = row.createCell(15);
+			cell.setCellValue("Mexican Company");
+			 cell.setCellStyle(my_style);
+			
+			
+
+			int i = 1;
+			while (rs.next()) {	
+				
+
+				
+				  row = spreadsheet.createRow(i);	
+				  cell = row.createCell(0);
+				  cell.setCellValue(rs.getString(1));
+				  cell = row.createCell(1);
+				  row.getCell(0).setCellStyle(style);
+				  cell.setCellValue(rs.getString(2));
+				  cell=row.createCell(2);
+				  row.getCell(1).setCellStyle(style);
+				  cell.setCellValue(rs.getString(3));
+				  cell=row.createCell(3);
+				  row.getCell(2).setCellStyle(style);
+				  cell.setCellValue(rs.getString(4));
+				  cell=row.createCell(4);
+				  row.getCell(3).setCellStyle(style);
+				  cell.setCellValue(rs.getString(5));
+				  cell=row.createCell(5);
+				  row.getCell(4).setCellStyle(style);
+				  cell.setCellValue(rs.getString(6));
+				  cell=row.createCell(6);
+				  row.getCell(5).setCellStyle(style);
+				  cell.setCellValue(rs.getString(7));
+				  cell=row.createCell(7);
+				  row.getCell(6).setCellStyle(style);
+				  cell.setCellValue(rs.getString(8));
+				  cell=row.createCell(8);
+				  row.getCell(7).setCellStyle(style);
+				  cell.setCellValue(rs.getString(9));
+				  cell=row.createCell(9);
+				  row.getCell(8).setCellStyle(style);
+				  cell.setCellValue(rs.getString(10));
+				  cell=row.createCell(10);
+				  row.getCell(9).setCellStyle(style);
+				  cell.setCellValue(rs.getString(11));
+				  cell=row.createCell(11);
+				  row.getCell(10).setCellStyle(style);
+				  cell.setCellValue(rs.getString(12));
+				  cell=row.createCell(12);
+				  row.getCell(11).setCellStyle(style);
+				  cell.setCellValue(rs.getString(13));
+				  cell=row.createCell(13);
+				  row.getCell(12).setCellStyle(style);
+				  cell.setCellValue(rs.getString(14));
+				  cell=row.createCell(14);
+				  row.getCell(13).setCellStyle(style);
+				  cell.setCellValue(rs.getString(15));
+				  cell=row.createCell(15);
+				  row.getCell(14).setCellStyle(style);
+				  cell.setCellValue(rs.getString(16));
+				  cell=row.createCell(16);
+				  row.getCell(15).setCellStyle(style);
 			  i++;
-				/*  for(int j=0;j<=14;j++){
-					  cell = row.createCell(j);
-					  cell.setCellValue(rs.getString(j));	*/				  
-				  }				  
+							  
+			}				  
 				 
 			
 	

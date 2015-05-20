@@ -5,7 +5,7 @@ public class HSMonthBean {
 	private String FRACCION;
 	private String year;
 	private String month;
-	private int MONTO;
+	private double MONTO;
 	public String getFRACCION() {
 		return FRACCION;
 	}
@@ -15,7 +15,7 @@ public class HSMonthBean {
 	public String getMonth() {
 		return month;
 	}
-	public int getMONTO() {
+	public double getMONTO() {
 		return MONTO;
 	}
 	public void setFRACCION(String fRACCION) {
@@ -27,7 +27,7 @@ public class HSMonthBean {
 	public void setMonth(String month) {
 		this.month = month;
 	}
-	public void setMONTO(int mONTO) {
+	public void setMONTO(double mONTO) {
 		MONTO = mONTO;
 	}
 	

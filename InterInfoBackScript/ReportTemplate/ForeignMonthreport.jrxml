@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ForeignMonthreport" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="58f394e8-1880-44c8-8df4-f1d0dab9b849">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="172"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ForeignMonthreport" printOrder="Horizontal" pageWidth="940" pageHeight="640" orientation="Landscape" columnWidth="900" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true" isSummaryWithPageHeaderAndFooter="true" uuid="58f394e8-1880-44c8-8df4-f1d0dab9b849">
+	<property name="ireport.zoom" value="0.42409761837248483"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Crosstab Data Text" hAlign="Center"/>
 	<queryString>
@@ -23,20 +23,20 @@
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="114">
 			<staticText>
-				<reportElement x="0" y="0" width="752" height="35" uuid="89aca4d2-90e8-4af9-974e-491903d21128"/>
-				<textElement>
+				<reportElement x="140" y="40" width="621" height="35" uuid="89aca4d2-90e8-4af9-974e-491903d21128"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Foreign Company Dollar in Month]]></text>
+				<text><![CDATA[Top 20 Foreign Supplier By Month  - Dollar]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<summary>
-		<band height="42" splitType="Stretch">
+		<band height="572">
 			<crosstab>
-				<reportElement x="0" y="0" width="752" height="42" uuid="3ba403b7-d797-4b38-95b4-fecd4f228b29"/>
+				<reportElement positionType="Float" x="11" y="0" width="900" height="572" uuid="3ba403b7-d797-4b38-95b4-fecd4f228b29"/>
 				<rowGroup name="foreignCompany" width="70" totalPosition="End">
 					<bucket class="java.lang.String">
 						<bucketExpression><![CDATA[$F{foreignCompany}]]></bucketExpression>
@@ -48,7 +48,7 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="c9538c4d-0d93-49e0-b494-c339a7ba77e3"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{foreignCompany}]]></textFieldExpression>
@@ -80,9 +80,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<textField>
-								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="7f8d7ca3-c9aa-43b4-b497-04157161583f"/>
-								<textElement>
-									<font size="8"/>
+								<reportElement style="Crosstab Data Text" x="31" y="0" width="50" height="30" uuid="7f8d7ca3-c9aa-43b4-b497-04157161583f"/>
+								<textElement verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{year}]]></textFieldExpression>
 							</textField>
@@ -94,9 +94,9 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="50" height="60" forecolor="#FFFFFF" uuid="8762dd6a-6001-446c-b4eb-b3ea896dba71"/>
+								<reportElement x="0" y="0" width="66" height="60" forecolor="#FFFFFF" uuid="8762dd6a-6001-446c-b4eb-b3ea896dba71"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8"/>
+									<font size="8" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Total year]]></text>
 							</staticText>
@@ -114,7 +114,7 @@
 							</box>
 							<textField>
 								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="40071eeb-3df6-4799-8552-d4ba75b82f6c"/>
-								<textElement>
+								<textElement verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$V{month}.substring( ($V{month}.indexOf( "-" ) + 1))]]></textFieldExpression>
@@ -127,7 +127,7 @@
 								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="50" height="30" uuid="f4d80e7c-1bb8-43f7-85d4-3ab282273083"/>
+								<reportElement x="0" y="0" width="63" height="30" uuid="f4d80e7c-1bb8-43f7-85d4-3ab282273083"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8"/>
 								</textElement>
@@ -144,9 +144,9 @@
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
+						<textField pattern="#,##0">
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="858ac313-7fec-41fb-a0c8-5d8ff11adc87"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
@@ -158,65 +158,65 @@
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
+						<textField pattern="#,##0">
 							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="e97177f8-6cef-4892-9615-c48c39ba122c"/>
-							<textElement>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell width="50" columnTotalGroup="year">
+				<crosstabCell width="66" columnTotalGroup="year">
 					<cellContents backcolor="#005FB3" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="b2030497-5ad0-45ee-9faa-ff9c4cfda489"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="66" height="25" forecolor="#FFFFFF" uuid="b2030497-5ad0-45ee-9faa-ff9c4cfda489"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell rowTotalGroup="foreignCompany" columnTotalGroup="year">
+				<crosstabCell width="66" rowTotalGroup="foreignCompany" columnTotalGroup="year">
 					<cellContents backcolor="#005FB3" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" forecolor="#FFFFFF" uuid="cf08a5f7-06af-427a-aa5b-4a488f216c11"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="66" height="25" forecolor="#FFFFFF" uuid="cf08a5f7-06af-427a-aa5b-4a488f216c11"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell width="50" columnTotalGroup="month">
+				<crosstabCell width="63" columnTotalGroup="month">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="a00908d0-79e8-47ae-aba0-ae977bf6277c"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="63" height="25" uuid="a00908d0-79e8-47ae-aba0-ae977bf6277c"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>
 						</textField>
 					</cellContents>
 				</crosstabCell>
-				<crosstabCell rowTotalGroup="foreignCompany" columnTotalGroup="month">
+				<crosstabCell width="63" rowTotalGroup="foreignCompany" columnTotalGroup="month">
 					<cellContents backcolor="#BFE1FF" mode="Opaque">
 						<box>
 							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
 						</box>
-						<textField>
-							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="6191add6-207a-44c2-8657-ae371364997c"/>
-							<textElement>
+						<textField pattern="#,##0">
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="63" height="25" uuid="6191add6-207a-44c2-8657-ae371364997c"/>
+							<textElement verticalAlignment="Middle">
 								<font size="8"/>
 							</textElement>
 							<textFieldExpression><![CDATA[$V{MONTOMeasure}]]></textFieldExpression>

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 import bean.CustomReportBean;
@@ -14,6 +16,7 @@ public class FinalDao {
 
 	Connection conn;
 	Statement stmt;
+	Statement stmt1;
 
 	public FinalDao(Properties prop) {
 		try {
@@ -33,13 +36,14 @@ public class FinalDao {
 				+ " AND c.border = a.ADUANA AND c.section = a.SECCION "
 				+ " AND a.TIPO = d.tipo AND a.transporte = e.transporte "
 				+ " AND a.ORIGEN = f.cc_key  AND a.RUTA = g.cc_key "
-				+ " AND a.DEST_ORIG = i.id  AND j.hscode = a.FRACCION AND k.rfc = a.RFC";
+				+ " AND a.DEST_ORIG = i.id  AND j.hscode = a.FRACCION AND k.rfc = a.RFC ";
 
-		String deletequery = "delete from temp_report";
+		String deletequery = "truncate table temp_report";
 
 		subQuery = "SELECT CASE  WHEN a.IE = '1' THEN 'Import'  WHEN a.IE = '2'"
-				+ " THEN 'Export'  END as IE, a.FRACCION,a.CANTIDAD, a.MONTO,taxnumber, k.razon, c.description as"
-				+ " border, concat('20',a.ANIO,'-',a.mes,'-',a.dia ) as date,f.country_name as ccOrigDest,"
+				+ " THEN 'Export'  END as IE, a.FRACCION,a.CANTIDAD, a.MONTO,taxnumber,"
+				+ " ifnull(ccn.cleanned_name,b.name) as supplier, c.description as  border, "
+				+ " concat('20',a.ANIO,'-',a.mes,'-',a.dia ) as date,f.country_name as ccOrigDest,"
 				+ " g.country_name as ccBuyerSeller, d.regimen,e.medio_transporte_esp,"
 				+ " h.description as regulation, i.description as merDest,"
 				+ " j.hscode_description, k.razon as mexican_company ";
@@ -50,9 +54,11 @@ public class FinalDao {
 					+ " ON (a.TPRIM_PERM = h.id OR a.TSEGU_PERM =h.id "
 					+ "OR a.TTERC_PERM = h.id OR a.TCUA_PERM = h.id "
 					+ "OR a.TQUI_PERM = h.id OR a.TSEX_PERM = h.id) "
-					+ ",COMMERCIAL_PARTNER b,border_master c,TIPOREGIMEN d, "
+					+ ",COMMERCIAL_PARTNER b left outer join clean_company_names ccn"
+					+ " on b.name = ccn.mexican_name,border_master c,TIPOREGIMEN d, "
 					+ " Transporte e, country_code f, country_code g,"
-					+ " merchandise_destination_master i, hscode_master j, CATALOGORFC k";
+					+ " merchandise_destination_master i, hscode_master j,"
+					+ " CATALOGORFC_INC k ";
 		} else {
 
 			fromClause = "from DATA_RAW a LEFT OUTER JOIN "
@@ -60,9 +66,10 @@ public class FinalDao {
 					+ " ON (a.TPRIM_PERM = h.id OR a.TSEGU_PERM = h.id "
 					+ " OR a.TTERC_PERM = h.id OR a.TCUA_PERM = h.id "
 					+ " OR a.TQUI_PERM = h.id OR  a.TSEX_PERM = h.id) "
-					+ ",COMMERCIAL_PARTNER b use index(taxnumber_idx), border_master c,TIPOREGIMEN d, "
+					+ ",COMMERCIAL_PARTNER b use index(taxnumber_idx) left outer join clean_company_names ccn"
+					+ " on b.name = ccn.mexican_name, border_master c,TIPOREGIMEN d, "
 					+ " Transporte e, country_code f, country_code g, "
-					+ " merchandise_destination_master i, hscode_master j, CATALOGORFC k";
+					+ " merchandise_destination_master i, hscode_master j, CATALOGORFC_INC k";
 		}
 		// ===========EmportExport Filter===================
 
@@ -199,9 +206,9 @@ public class FinalDao {
 		// System.out.println("Supplier :"+bean.getSupplier().trim().length());
 
 		if (bean.getSupplier() != null && !bean.getSupplier().equals("")) {
-			fromClause = fromClause + " , supplier_master sm ";
-			where = where + "AND sm.supplier_id " + "IN ( '"
-					+ bean.getSupplier() + "' ) "
+			fromClause = fromClause + " , supplier_master_inc sm ";
+			where = where + "AND sm.supplier_id " + "IN ("
+					+ bean.getSupplier() + ") "
 					+ " AND (b.name = sm.supplier_name) ";
 
 		}
@@ -215,8 +222,7 @@ public class FinalDao {
 				if (i == 0)
 					regimeString = "'" + regimeList[i].trim() + "'";
 				else
-					regimeString = regimeString + "'" + regimeList[i].trim()
-							+ "',";
+					regimeString = regimeString + ",'" + regimeList[i].trim() + "'";
 			}
 
 			where = where + " AND a.TIPO IN(" + regimeString + ")";
@@ -236,26 +242,25 @@ public class FinalDao {
 
 			}
 
-			where = where + " AND i.id IN (" + merDestString + ") "
-					+ " AND a.DEST_ORIG = i.id ";
+			where = where + " AND i.id IN (" + merDestString + ") ";
 		}
 
 		// ================Tax Number Filter=========================
 		// System.out.println("TaxNumber :"+bean.getTaxNumber().trim().length());
 		if (bean.getTaxNumber().trim().length() != 0) {
-			fromClause = fromClause + " , taxno_master tm ";
+			fromClause = fromClause + " , taxno_master_inc tm ";
 
 			String taxNumberString = "";
 			String taxNumberList[] = bean.getTaxNumber().split(",");
 			for (int i = 0; i < taxNumberList.length; i++) {
 				if (i == 0)
-					taxNumberString = "'" + taxNumberList[i].trim() + "'";
+					taxNumberString = "" + taxNumberList[i].trim() + "";
 				else
-					taxNumberString = taxNumberString + ",'"
-							+ taxNumberList[i].trim() + "'";
+					taxNumberString = taxNumberString + ","
+							+ taxNumberList[i].trim() + "";
 			}
 
-			where = where + " AND (b.taxnumber = tm.tax_no) and "
+			where = where + " AND b.taxnumber = tm.tax_no and "
 					+ "tm.taxno_id IN (" + taxNumberString + ")";
 
 		}
@@ -263,7 +268,7 @@ public class FinalDao {
 		// ================Date Filter=========================
 		if (bean.getFromDate().trim().length() > 0
 				&& bean.getToDate().trim().length() > 0) {
-			where = where + "AND DATE(CONCAT('20',ANIO,'-',mes,'-',dia)) "
+			where = where + " AND DATE(CONCAT('20',ANIO,'-',mes,'-',dia)) "
 					+ " BETWEEN '" + bean.getFromDate() + "' and '"
 					+ bean.getToDate() + "'";
 
@@ -280,11 +285,12 @@ public class FinalDao {
 
 		try {
 			stmt = conn.createStatement();
-			// int delete = stmt.executeUpdate(deletequery);
-			// System.out.println("record deleted from temp table "+delete);
+			int delete = stmt.executeUpdate(deletequery);
+			System.out.println("record deleted from temp table "+delete);
 
-			// int record = stmt.executeUpdate(finalQuery);
-			// System.out.println("record inserted into temp_table " + record);
+			stmt1 = conn.createStatement();
+			int record = stmt1.executeUpdate(finalQuery);
+			System.out.println("record inserted into temp_table " + record);
 
 		} catch (Exception e) {
 
@@ -300,6 +306,8 @@ public class FinalDao {
 				conn.close();
 			if (stmt != null)
 				stmt.close();
+			if (stmt1 != null)
+				stmt1.close();
 			System.out.println("connection close in final Dao");
 		} catch (Exception e) {
 			System.out.println("EXCEPTION IN connection close in final dao");
@@ -308,6 +316,21 @@ public class FinalDao {
 
 	}
 
+	public String getStringForInClause(String str) {
+		String generatedString = "";
+		ArrayList<String> list = new ArrayList<String>(Arrays.asList(str
+				.split(",")));
+		for (int i = 0; i < list.size(); i++) {
+			if (i == 0) {
+				generatedString = "'"+list.get(i)+"'";
+			} else {
+				generatedString = generatedString+",'"+list.get(i)+"'";
+			}
+
+		}
+		return generatedString;
+	}
+	
 	public String getReportName(String reportId) {
 		String reportName = "";
 		ResultSet rs = null;

@@ -18,16 +18,20 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import bean.CountryOriginMonthBean;
 import bean.CountryOriginQuarterBean;
 import bean.CountryOriginSemisterBean;
+import bean.CountryYearDollarBean;
 import bean.CustomPortBean;
 import bean.CustomsMonthBean;
 import bean.CustomsQuarterBean;
 import bean.CustomsSemisterBean;
+import bean.CustomsYearDollarBean;
 import bean.ForeignMonthBean;
 import bean.ForeignQuarterBean;
 import bean.ForeignSemBean;
+import bean.ForeignYearBean;
 import bean.HSBean;
 import bean.HSBeanQuarter;
 import bean.HSBeanSemister;
+import bean.HSCodeYearBean;
 import bean.HSMonthBean;
 import bean.MasterBean;
 import bean.MaxicanMonthBean;
@@ -35,6 +39,7 @@ import bean.MaxicanQuarterBean;
 import bean.MaxicanSemisterBean;
 import bean.MexicanCustomPortBean;
 import bean.MexicanSupplierBean;
+import bean.MexicanYearDollarBean;
 import bean.SubReportMap;
 import connection.MyConnection;
 import dao.FinalDao;
@@ -78,7 +83,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(MONTO) as uusd "
 				+ "from temp_report a,(select FRACCION,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -89,7 +94,7 @@ public class ReportData {
 				hsMonthBean.setFRACCION(rs.getString(1));
 				hsMonthBean.setYear(rs.getString(2));
 				hsMonthBean.setMonth(rs.getString(3));
-				hsMonthBean.setMONTO(rs.getInt(4));
+				hsMonthBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsMonthBean);
 				
@@ -108,7 +113,7 @@ public class ReportData {
 		String HSQuery = "Select a.FRACCION,YEAR(date) as year, "
 				+ " quarter(date),sum(MONTO) as MMONTO"
 				+ " from temp_report a,(select FRACCION,sum(MONTO) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -118,7 +123,7 @@ public class ReportData {
 				hsBean.setFRACCION(rs.getString(1));
 				hsBean.setYear(rs.getString(2));
 				hsBean.setMonth(rs.getString(3));
-				hsBean.setMONTO(rs.getInt(4));
+				hsBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsBean);
 			}
@@ -136,7 +141,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select FRACCION,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -146,7 +151,7 @@ public class ReportData {
 				hsBean.setFRACCION(rs.getString(1));
 				hsBean.setYear(rs.getString(2));
 				hsBean.setMonth(rs.getString(3));
-				hsBean.setMONTO(rs.getInt(4));
+				hsBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsBean);
 			}
@@ -156,7 +161,38 @@ public class ReportData {
 			System.out.println("Error while getHSBySemesterDollar " + ex);
 		}
 	}
+	
+	// =========================HSCODE By Dollar in Year ================
 
+	public void getHSByYearDollar() {
+		ArrayList<HSCodeYearBean> beans = new ArrayList<HSCodeYearBean>();
+		String HSQuery = " Select a.FRACCION,YEAR(date) AS year,"
+				+ "sum(MONTO) as uusd "
+				+ "from temp_report a,(select FRACCION,sum(MONTO) from temp_report "
+				+ "group by 1 order by 2 desc limit 20) b"
+				+ " where a.FRACCION=b.FRACCION group by 1,2";
+
+		try {
+			ResultSet rs = stmt.executeQuery(HSQuery);
+			while (rs.next()) {
+				
+				HSCodeYearBean hsCodeYearBean = new HSCodeYearBean();
+				hsCodeYearBean .setFRACCION(rs.getString(1));
+				hsCodeYearBean .setYear(rs.getString(2));
+				hsCodeYearBean .setMONTO(rs.getDouble(3));
+
+				beans.add(hsCodeYearBean );
+				
+				
+			}
+			masterBean.setHSCodeYearBean(beans);
+	
+		} catch (Exception ex) {
+			System.out.println("Error while getHSByYearDollar " + ex);
+		}
+	}
+
+	
 	// =========================HSCODE By Qty in Month================
 
 	public void getHSByMonthQty() {
@@ -176,7 +212,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(CANTIDAD) as uusd "
 				+ "from temp_report a,(select FRACCION,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -186,7 +222,7 @@ public class ReportData {
 				hsBean.setFRACCION(rs.getString(1));
 				hsBean.setYear(rs.getString(2));
 				hsBean.setMonth(rs.getString(3));
-				hsBean.setMONTO(rs.getInt(4));
+				hsBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsBean);
 			}
@@ -203,7 +239,7 @@ public class ReportData {
 		String HSQuery = "Select a.FRACCION,YEAR(date) as year, "
 				+ " quarter(date),sum(CANTIDAD) as CANTIDAD"
 				+ " from temp_report a,(select FRACCION,sum(CANTIDAD) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -213,7 +249,7 @@ public class ReportData {
 				hsBean.setFRACCION(rs.getString(1));
 				hsBean.setYear(rs.getString(2));
 				hsBean.setMonth(rs.getString(3));
-				hsBean.setMONTO(rs.getInt(4));
+				hsBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsBean);
 			}
@@ -231,7 +267,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select FRACCION,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.FRACCION=b.FRACCION group by 1,2,3";
 
 		try {
@@ -241,7 +277,7 @@ public class ReportData {
 				hsBean.setFRACCION(rs.getString(1));
 				hsBean.setYear(rs.getString(2));
 				hsBean.setMonth(rs.getString(3));
-				hsBean.setMONTO(rs.getInt(4));
+				hsBean.setMONTO(rs.getDouble(4));
 
 				beans.add(hsBean);
 			}
@@ -250,6 +286,33 @@ public class ReportData {
 			System.out.println("Error while getHSBySemQty " + ex);
 		}
 	}
+	
+	// =========================HSCODE By Qty in Year================
+	
+	public void getHSByYearQty() {
+		ArrayList<HSCodeYearBean> beans = new ArrayList<HSCodeYearBean>();
+		String HSQuery = " Select a.FRACCION,YEAR(date) AS year,"
+				+ "sum(CANTIDAD) as uusd "
+				+ "from temp_report a,(select FRACCION,sum(CANTIDAD) from temp_report "
+				+ "group by 1 order by 2 desc limit 20) b"
+				+ " where a.FRACCION=b.FRACCION group by 1,2";
+
+		try {
+			ResultSet rs = stmt.executeQuery(HSQuery);
+			while (rs.next()) {
+				HSCodeYearBean hSCodeYearBean = new HSCodeYearBean();
+				hSCodeYearBean.setFRACCION(rs.getString(1));
+				hSCodeYearBean.setYear(rs.getString(2));
+				hSCodeYearBean.setMONTO(rs.getDouble(3));
+
+				beans.add(hSCodeYearBean);
+			}
+			masterBean.setHSCodeYearBeanQty(beans);
+		} catch (Exception ex) {
+			System.out.println("Error while getHSByYearQty " + ex);
+		}
+	}
+
 
 	// =========================Maxican By Dollar in Month================
 
@@ -270,7 +333,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select Taxnumber,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -298,7 +361,7 @@ public class ReportData {
 		String MaxicanQuery = "Select a.Taxnumber,YEAR(date) as year, "
 				+ " quarter(date),sum(MONTO) as MMONTO"
 				+ " from temp_report a,(select Taxnumber,sum(MONTO) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -327,7 +390,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select Taxnumber,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -347,6 +410,36 @@ public class ReportData {
 			System.out.println("Error while getMaxicanBySemDollar " + ex);
 		}
 	}
+	
+	
+	// =========================Maxican By Dollar in Year================
+
+		public void getMaxicanByYearDollar() {
+			ArrayList<MexicanYearDollarBean> beans = new ArrayList<MexicanYearDollarBean>();
+			String MaxicanQuery = " Select a.Taxnumber,YEAR(date) AS year,"
+					+ "sum(MONTO) as MONTO "
+					+ "from temp_report a,(select Taxnumber,sum(MONTO) from temp_report "
+					+ "group by 1 order by 2 desc limit 20) b"
+					+ " where a.Taxnumber=b.Taxnumber group by 1,2";
+			try {
+				ResultSet rs = stmt.executeQuery(MaxicanQuery);
+				while (rs.next()) {
+
+					MexicanYearDollarBean mexicanyearBean = new MexicanYearDollarBean();
+					mexicanyearBean.setTaxNumber(rs.getString(1));
+					mexicanyearBean.setYear(rs.getString(2));
+					mexicanyearBean.setMONTO(rs.getDouble(3));
+
+					beans.add(mexicanyearBean);
+				}
+				masterBean.setMexicanYearBean(beans);
+
+			} catch (Exception ex) {
+				System.out.println("Error while getMaxicanByMonthDollar " + ex);
+			}
+		}
+
+	
 
 	// =========================Maxican By Qty in Month================
 
@@ -367,7 +460,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select Taxnumber,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -395,7 +488,7 @@ public class ReportData {
 		String MaxicanQuery = "Select a.Taxnumber,YEAR(date) as year, "
 				+ " quarter(date),sum(CANTIDAD) as CANTIDAD"
 				+ " from temp_report a,(select Taxnumber,sum(CANTIDAD) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -424,7 +517,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select Taxnumber,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.Taxnumber=b.Taxnumber group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(MaxicanQuery);
@@ -444,6 +537,33 @@ public class ReportData {
 			System.out.println("Error while getMaxicanBySemQty " + ex);
 		}
 	}
+	// =========================Maxican By Qty in Year================
+	
+	public void getMaxicanByYearQty() {
+		ArrayList<MexicanYearDollarBean> beans = new ArrayList<MexicanYearDollarBean>();
+		String MaxicanQuery = " Select a.Taxnumber,YEAR(date) AS year,"
+				+ "sum(CANTIDAD) as CANTIDAD "
+				+ "from temp_report a,(select Taxnumber,sum(CANTIDAD) from temp_report "
+				+ "group by 1 order by 2 desc limit 20) b"
+				+ " where a.Taxnumber=b.Taxnumber group by 1,2";
+		try {
+			ResultSet rs = stmt.executeQuery(MaxicanQuery);
+			while (rs.next()) {
+
+				MexicanYearDollarBean mexicanyearBean = new MexicanYearDollarBean();
+				mexicanyearBean.setTaxNumber(rs.getString(1));
+				mexicanyearBean.setYear(rs.getString(2));
+				mexicanyearBean.setMONTO(rs.getDouble(3));
+
+				beans.add(mexicanyearBean);
+			}
+			masterBean.setMexicanYearBeanQty(beans);
+
+		} catch (Exception ex) {
+			System.out.println("Error while getMaxicanByYearQty " + ex);
+		}
+	}
+
 
 	// =========================Customs By Dollar in Month================
 
@@ -465,7 +585,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select border,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.border=b.border group by 1,2,3";
 
 		try {
@@ -476,7 +596,7 @@ public class ReportData {
 				customsMonthBean.setBorder(rs.getString(1));
 				customsMonthBean.setYear(rs.getString(2));
 				customsMonthBean.setMonth(rs.getString(3));
-				customsMonthBean.setMONTO(rs.getInt(4));
+				customsMonthBean.setMONTO(rs.getDouble(4));
 
 				beans.add(customsMonthBean);
 			}
@@ -494,7 +614,7 @@ public class ReportData {
 		String CustomsQuery = "Select a.border,YEAR(date) as year, "
 				+ " quarter(date),sum(MONTO) as MONTO"
 				+ " from temp_report a,(select border,sum(MONTO) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.border=b.border group by 1,2,3";
 
 		try {
@@ -505,7 +625,7 @@ public class ReportData {
 				customsQuarterBean.setBorder(rs.getString(1));
 				customsQuarterBean.setYear(rs.getString(2));
 				customsQuarterBean.setMonth(rs.getString(3));
-				customsQuarterBean.setMONTO(rs.getInt(4));
+				customsQuarterBean.setMONTO(rs.getDouble(4));
 
 				beans.add(customsQuarterBean);
 			}
@@ -523,7 +643,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select border,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.border=b.border group by 1,2,3";
 
 		try {
@@ -543,6 +663,35 @@ public class ReportData {
 			System.out.println("Error while getCustomsBySemDollar " + ex);
 		}
 	}
+	
+	// =========================Customs By Dollar in Year================
+
+		public void getCustomsByYearDollar() {
+			ArrayList<CustomsYearDollarBean> beans = new ArrayList<CustomsYearDollarBean>();
+
+			String CustomsQuery = " Select a.border,YEAR(date) AS year,"
+					+ "sum(MONTO) as MONTO "
+					+ "from temp_report a,(select border,sum(MONTO) from temp_report "
+					+ "group by 1 order by 2 desc limit 20) b"
+					+ " where a.border=b.border group by 1,2 ";
+
+			try {
+				ResultSet rs = stmt.executeQuery(CustomsQuery);
+				while (rs.next()) {
+
+					CustomsYearDollarBean customsYearBean = new CustomsYearDollarBean();
+					customsYearBean.setBorder(rs.getString(1));
+					customsYearBean.setYear(rs.getString(2));
+					customsYearBean.setMONTO(rs.getDouble(3));
+
+					beans.add(customsYearBean);
+				}
+
+				masterBean.setCustomsYearBean(beans);
+			} catch (Exception ex) {
+				System.out.println("Error while getCustomsByYearDollar " + ex);
+			}
+		}
 
 	// =========================Customs By Quantity in Month================
 
@@ -564,7 +713,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select border,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.border=b.border group by 1,2,3";
 
 		try {
@@ -575,7 +724,7 @@ public class ReportData {
 				customsMonthBean.setBorder(rs.getString(1));
 				customsMonthBean.setYear(rs.getString(2));
 				customsMonthBean.setMonth(rs.getString(3));
-				customsMonthBean.setMONTO(rs.getInt(4));
+				customsMonthBean.setMONTO(rs.getDouble(4));
 
 				beans.add(customsMonthBean);
 			}
@@ -593,7 +742,7 @@ public class ReportData {
 		String CustomsQuery = "Select a.border,YEAR(date) as year, "
 				+ " quarter(date),sum(CANTIDAD) as CANTIDAD"
 				+ " from temp_report a,(select border,sum(CANTIDAD) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.border=b.border group by 1,2,3";
 
 		try {
@@ -604,7 +753,7 @@ public class ReportData {
 				customsQuarterBean.setBorder(rs.getString(1));
 				customsQuarterBean.setYear(rs.getString(2));
 				customsQuarterBean.setMonth(rs.getString(3));
-				customsQuarterBean.setMONTO(rs.getInt(4));
+				customsQuarterBean.setMONTO(rs.getDouble(4));
 
 				beans.add(customsQuarterBean);
 			}
@@ -622,7 +771,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select border,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.border=b.border group by 1,2,3";
 
 		try {
@@ -640,6 +789,35 @@ public class ReportData {
 			masterBean.setCustomsSemisterBeanQty(beans);
 		} catch (Exception ex) {
 			System.out.println("Error while getCustomsBySemQty " + ex);
+		}
+	}
+	
+	// =========================Customs By Qty in Year================
+
+	public void getCustomsByYearQty() {
+		ArrayList<CustomsYearDollarBean> beans = new ArrayList<CustomsYearDollarBean>();
+
+		String CustomsQuery = " Select a.border,YEAR(date) AS year,"
+				+ "sum(CANTIDAD) as CANTIDAD "
+				+ "from temp_report a,(select border,sum(CANTIDAD) from temp_report "
+				+ "group by 1 order by 2 desc limit 20) b"
+				+ " where a.border=b.border group by 1,2";
+
+		try {
+			ResultSet rs = stmt.executeQuery(CustomsQuery);
+			while (rs.next()) {
+
+				CustomsYearDollarBean customsYearBeanQty = new CustomsYearDollarBean();
+				customsYearBeanQty.setBorder(rs.getString(1));
+				customsYearBeanQty.setYear(rs.getString(2));
+				customsYearBeanQty.setMONTO(rs.getDouble(3));
+
+				beans.add(customsYearBeanQty);
+			}
+
+			masterBean.setCustomsYearBeanQty(beans);
+		} catch (Exception ex) {
+			System.out.println("Error while getCustomsByYearQty " + ex);
 		}
 	}
 
@@ -662,7 +840,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select ccOrigDest,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(CountryOriginQuery);
@@ -672,7 +850,7 @@ public class ReportData {
 				countryOriginMonthBean.setCcOrigDest(rs.getString(1));
 				countryOriginMonthBean.setYear(rs.getString(2));
 				countryOriginMonthBean.setMonth(rs.getString(3));
-				countryOriginMonthBean.setMONTO(rs.getInt(4));
+				countryOriginMonthBean.setMONTO(rs.getDouble(4));
 
 				beans.add(countryOriginMonthBean);
 			}
@@ -689,7 +867,7 @@ public class ReportData {
 		String CountryOriginQuery = "Select a.ccOrigDest,YEAR(date) as year, "
 				+ " quarter(date),sum(MONTO) as MONTO"
 				+ " from temp_report a,(select ccOrigDest,sum(MONTO) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 
 		try {
@@ -700,7 +878,7 @@ public class ReportData {
 				countryOriginQuarterBean.setCcOrigDest(rs.getString(1));
 				countryOriginQuarterBean.setYear(rs.getString(2));
 				countryOriginQuarterBean.setMonth(rs.getString(3));
-				countryOriginQuarterBean.setMONTO(rs.getInt(4));
+				countryOriginQuarterBean.setMONTO(rs.getDouble(4));
 
 				beans.add(countryOriginQuarterBean);
 			}
@@ -718,7 +896,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select ccOrigDest,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(CountryOriginQuery);
@@ -738,6 +916,33 @@ public class ReportData {
 					+ ex);
 		}
 	}
+	
+	// =================Country Origin By Dollar in Year================
+
+		public void getCountryByYearDollar() {
+			ArrayList<CountryYearDollarBean> beans = new ArrayList<CountryYearDollarBean>();
+			String CountryOriginQuery = " Select a.ccOrigDest,YEAR(date) AS year,"
+					+ "sum(MONTO) as MONTO "
+					+ "from temp_report a,(select ccOrigDest,sum(MONTO) from temp_report "
+					+ "group by 1 order by 2 desc limit 20) b"
+					+ " where a.ccOrigDest=b.ccOrigDest group by 1,2";
+			try {
+				ResultSet rs = stmt.executeQuery(CountryOriginQuery);
+				while (rs.next()) {
+
+					CountryYearDollarBean countryYearDollarBean = new CountryYearDollarBean();
+					countryYearDollarBean .setOrigDest(rs.getString(1));
+					countryYearDollarBean .setYear(rs.getString(2));
+					countryYearDollarBean .setMONTO(rs.getDouble(3));
+
+					beans.add(countryYearDollarBean );
+				}
+				masterBean.setCountryYearBean(beans);
+			} catch (Exception ex) {
+				System.out.println("Error while getCountryByYearDollar " + ex);
+			}
+		}
+
 
 	// ================Country Origin By Quantity in Month================
 
@@ -758,7 +963,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select ccOrigDest,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(CountryOriginQuery);
@@ -768,7 +973,7 @@ public class ReportData {
 				countryOriginMonthBean.setCcOrigDest(rs.getString(1));
 				countryOriginMonthBean.setYear(rs.getString(2));
 				countryOriginMonthBean.setMonth(rs.getString(3));
-				countryOriginMonthBean.setMONTO(rs.getInt(4));
+				countryOriginMonthBean.setMONTO(rs.getDouble(4));
 
 				beans.add(countryOriginMonthBean);
 			}
@@ -785,7 +990,7 @@ public class ReportData {
 		String CountryOriginQuery = "Select a.ccOrigDest,YEAR(date) as year, "
 				+ " quarter(date),sum(CANTIDAD) as CANTIDAD"
 				+ " from temp_report a,(select ccOrigDest,sum(CANTIDAD) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(CountryOriginQuery);
@@ -795,7 +1000,7 @@ public class ReportData {
 				countryOriginQuarterBean.setCcOrigDest(rs.getString(1));
 				countryOriginQuarterBean.setYear(rs.getString(2));
 				countryOriginQuarterBean.setMonth(rs.getString(3));
-				countryOriginQuarterBean.setMONTO(rs.getInt(4));
+				countryOriginQuarterBean.setMONTO(rs.getDouble(4));
 
 				beans.add(countryOriginQuarterBean);
 			}
@@ -812,7 +1017,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select ccOrigDest,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.ccOrigDest=b.ccOrigDest group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(CountryOriginQuery);
@@ -832,7 +1037,33 @@ public class ReportData {
 		}
 	}
 	
-	// ==============Foreign Compamy By Dollar in Month================
+	// =================Country Origin By Qty in Year================
+
+			public void getCountryByYearQty() {
+				ArrayList<CountryYearDollarBean> beans = new ArrayList<CountryYearDollarBean>();
+				String CountryOriginQuery = " Select a.ccOrigDest,YEAR(date) AS year,"
+						+ "sum(CANTIDAD) as CANTIDAD "
+						+ "from temp_report a,(select ccOrigDest,sum(CANTIDAD) from temp_report "
+						+ "group by 1 order by 2 desc limit 20) b"
+						+ " where a.ccOrigDest=b.ccOrigDest group by 1,2";
+				try {
+					ResultSet rs = stmt.executeQuery(CountryOriginQuery);
+					while (rs.next()) {
+
+						CountryYearDollarBean countryYearDollarBean = new CountryYearDollarBean();
+						countryYearDollarBean .setOrigDest(rs.getString(1));
+						countryYearDollarBean .setYear(rs.getString(2));
+						countryYearDollarBean .setMONTO(rs.getDouble(3));
+
+						beans.add(countryYearDollarBean );
+					}
+					masterBean.setCountryYearBeanQty(beans);
+				} catch (Exception ex) {
+					System.out.println("Error while getCountryByYearQty " + ex);
+				}
+			}
+	
+	// ==============Foreign Company By Dollar in Month================
 	public void getForeignByMonthDollar() {
 		ArrayList<ForeignMonthBean> beans = new ArrayList<ForeignMonthBean>();
 		String foreignQuery =   " Select a.supplier,YEAR(date) AS year,"
@@ -850,7 +1081,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select supplier,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.supplier=b.supplier group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
@@ -877,7 +1108,7 @@ public class ReportData {
 		String foreignQuery =  "Select a.supplier,YEAR(date) as year, "
 				+ " quarter(date),sum(MONTO) as MONTO"
 				+ " from temp_report a,(select supplier,sum(MONTO) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.supplier=b.supplier group by 1,2,3";		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
 			while (rs.next()) {
@@ -904,7 +1135,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(MONTO) as MONTO "
 				+ "from temp_report a,(select supplier,sum(MONTO) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.supplier=b.supplier group by 1,2,3";		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
 			while (rs.next()) {
@@ -922,6 +1153,33 @@ public class ReportData {
 			System.out.println("Error while getForeignBySemDollar " + ex);
 		}
 	}
+	
+	// ==============Foreign Company By Dollar in Year================
+	public void getForeignByYearDollar() {
+		ArrayList<ForeignYearBean> beans = new ArrayList<ForeignYearBean>();
+		String foreignQuery =   " Select a.supplier,YEAR(date) AS year,"
+				+ "sum(MONTO) as MONTO "
+				+ "from temp_report a,(select supplier,sum(MONTO) from temp_report "
+				+ "group by 1 order by 2 desc limit 20) b"
+				+ " where a.supplier=b.supplier group by 1,2";
+		try {
+			ResultSet rs = stmt.executeQuery(foreignQuery);
+			while (rs.next()) {
+
+				ForeignYearBean foreignYearBean = new ForeignYearBean();
+				foreignYearBean.setSupplier(rs.getString(1));
+				foreignYearBean.setYear(rs.getString(2));
+				foreignYearBean.setMONTO(rs.getDouble(3));
+
+				beans.add(foreignYearBean);
+			}
+			masterBean.setForeignYearBean(beans);
+		} catch (Exception ex) {
+			System.out.println("Error while getForeignByYearDollar " + ex);
+		}
+	}
+
+
 
 	// ==============Foreign Compamy By Quantity in Month================
 	
@@ -942,7 +1200,7 @@ public class ReportData {
 				+ "when MONTH(date) = '12' then '93-Dec '"
 				+ "end as month,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select supplier,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b"
+				+ "group by 1 order by 2 desc limit 20) b"
 				+ " where a.supplier=b.supplier group by 1,2,3";
 		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
@@ -969,7 +1227,7 @@ public class ReportData {
 		String foreignQuery =  "Select a.supplier,YEAR(date) as year, "
 				+ " quarter(date),sum(CANTIDAD) as CANTIDAD"
 				+ " from temp_report a,(select supplier,sum(CANTIDAD) from temp_report"
-				+ " group by 1 order by 2 desc limit 10) b"
+				+ " group by 1 order by 2 desc limit 20) b"
 				+ " where a.supplier=b.supplier group by 1,2,3";		
 		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
@@ -979,7 +1237,7 @@ public class ReportData {
 				foreignQuarterBeanQty.setForeignCompany(rs.getString(1));
 				foreignQuarterBeanQty.setYear(rs.getString(2));
 				foreignQuarterBeanQty.setMonth(rs.getString(3));
-				foreignQuarterBeanQty.setMONTO(rs.getDouble(4));
+				foreignQuarterBeanQty.setMONTO(rs.getDouble(3));
 
 				beans.add(foreignQuarterBeanQty);
 			}
@@ -997,7 +1255,7 @@ public class ReportData {
 				+ "case when MONTH(date) < '7' then '1'else '2'"
 				+ "end as semester,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report a,(select supplier,sum(CANTIDAD) from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.supplier=b.supplier group by 1,2,3";		
 		try {
 			ResultSet rs = stmt.executeQuery(foreignQuery);
@@ -1007,7 +1265,7 @@ public class ReportData {
 				foreignSemBeanQty.setForeignCompany(rs.getString(1));
 				foreignSemBeanQty.setYear(rs.getString(2));
 				foreignSemBeanQty.setMonth(rs.getString(3));
-				foreignSemBeanQty.setMONTO(rs.getDouble(4));
+				foreignSemBeanQty.setMONTO(rs.getDouble(3));
 
 				beans.add(foreignSemBeanQty);
 			}
@@ -1016,19 +1274,46 @@ public class ReportData {
 			System.out.println("Error while getForeignBySemQty " + ex);
 		}
 	}
+	
+	// ==============Foreign Company By Qty in Year================
+		
+	public void getForeignByYearQty() {
+			ArrayList<ForeignYearBean> beans = new ArrayList<ForeignYearBean>();
+			String foreignQuery =   " Select a.supplier,YEAR(date) AS year,"
+					+ "sum(CANTIDAD) as CANTIDAD "
+					+ "from temp_report a,(select supplier,sum(CANTIDAD) from temp_report "
+					+ "group by 1 order by 2 desc limit 20) b"
+					+ " where a.supplier=b.supplier group by 1,2";
+			try {
+				ResultSet rs = stmt.executeQuery(foreignQuery);
+				while (rs.next()) {
+
+					ForeignYearBean foreignYearBean = new ForeignYearBean();
+					foreignYearBean.setSupplier(rs.getString(1));
+					foreignYearBean.setYear(rs.getString(2));
+					foreignYearBean.setMONTO(rs.getDouble(3));
+
+					beans.add(foreignYearBean);
+				}
+				masterBean.setForeignYearBeanQty(beans);
+			} catch (Exception ex) {
+				System.out.println("Error while getForeignByYearQty " + ex);
+			}
+		}
+
 
 	// ==============Mexican Company by Custom_port for Dollar ================
 	
 public void getMexicanByCustomPortDollar() {
 	ArrayList<MexicanCustomPortBean> beans = new ArrayList<MexicanCustomPortBean>();
-	String MexicanCustomPortQuery =  "select z.mexican_company,z.border,sum(z.MONTO) as MONTO "
-			+ "from temp_report z, "
+	String MexicanCustomPortQuery = "select z.mexican_company ,"
+			+ "z.border,sum(z.MONTO) as MONTO from temp_report z,"
 			+ "(select a.border ,sum(a.MONTO) as MONTO from temp_report a, "
 			+ "(select mexican_company ,sum(MONTO) as MONTO from temp_report  "
-			+ "group by 1 order by 2 desc limit 10) b "
-			+ "where a.mexican_company = b.mexican_company group by 1 order by 2 desc limit 10 ) x, "
+			+ "group by 1 order by 2 desc limit 20) b "
+			+ "where a.mexican_company = b.mexican_company group by 1 order by 2 desc limit 20 ) x, "
 			+ "(select mexican_company ,sum(MONTO) as MONTO from temp_report  "
-			+ "group by 1 order by 2 desc limit 10) y  "
+			+ "group by 1 order by 2 desc limit 20) y  "
 			+ "where z.mexican_company=y.mexican_company and z.border = x.border "
 			+ "group by 1,2";	
 	try {
@@ -1052,16 +1337,18 @@ public void getMexicanByCustomPortDollar() {
 	
 public void getMexicanByCustomPortQty() {
 	ArrayList<MexicanCustomPortBean> beans = new ArrayList<MexicanCustomPortBean>();
-	String MexicanCustomPortQuery =  "select z.mexican_company,z.border,sum(z.CANTIDAD) as CANTIDAD "
-			+ "from temp_report z, "
-			+ "(select a.border ,sum(a.CANTIDAD) as CANTIDAD from temp_report a, "
+	String MexicanCustomPortQuery = "select z.mexican_company,"
+			+ "z.border,sum(z.CANTIDAD) as CANTIDAD "
+			+ "from temp_report z , "
+			+ "(select a.border ,sum(a.CANTIDAD) as CANTIDAD from temp_report a,"
+			+ "(select mexican_company ,sum(CANTIDAD) as CANTIDAD from temp_report "
+			+ "group by 1 order by 2 desc limit 20) b  "
+			+ "where a.mexican_company = b.mexican_company group by "
+			+ "1 order by 2 desc limit 20 ) x, "
 			+ "(select mexican_company ,sum(CANTIDAD) as CANTIDAD from temp_report  "
-			+ "group by 1 order by 2 desc limit 10) b "
-			+ "where a.mexican_company = b.mexican_company group by 1 order by 2 desc limit 10 ) x, "
-			+ "(select mexican_company ,sum(CANTIDAD) as CANTIDAD from temp_report  "
-			+ "group by 1 order by 2 desc limit 10) y  "
+			+ "group by 1 order by 2 desc limit 20) y "
 			+ "where z.mexican_company=y.mexican_company and z.border = x.border "
-			+ "group by 1,2";	
+			+ "group by 1,2";
 	try {
 		ResultSet rs = stmt.executeQuery(MexicanCustomPortQuery);
 		while (rs.next()) {
@@ -1087,11 +1374,11 @@ public void getMexicanByCustomPortQty() {
 		String CustomPortQuery =  "select z.border,z.supplier,sum(z.MONTO) as MONTO  "
 				+ "from temp_report z,(select a.supplier ,sum(a.MONTO) as MONTO  "
 				+ "from temp_report a, (select border ,sum(MONTO) as MONTO  "
-				+ "from temp_report group by 1 order by 2 desc limit 10) b  "
+				+ "from temp_report group by 1 order by 2 desc limit 20) b  "
 				+ "where a.border = b.border "
-				+ "group by 1 order by 2 desc limit 10 ) x, "
+				+ "group by 1 order by 2 desc limit 20 ) x, "
 				+ "(select border ,sum(MONTO) as MONTO from temp_report  "
-				+ "group by 1 order by 2 desc limit 10) y where z.border=y.border "
+				+ "group by 1 order by 2 desc limit 20) y where z.border=y.border "
 				+ "and z.supplier = x.supplier group by 1,2;";	
 	try {
 		ResultSet rs = stmt.executeQuery(CustomPortQuery);
@@ -1118,11 +1405,11 @@ public void getMexicanByCustomPortQty() {
 		String CustomPortQuery =  "select z.border,z.supplier,sum(z.CANTIDAD) as CANTIDAD  "
 				+ "from temp_report z,(select a.supplier ,sum(a.CANTIDAD) as CANTIDAD  "
 				+ "from temp_report a, (select border ,sum(CANTIDAD) as CANTIDAD  "
-				+ "from temp_report group by 1 order by 2 desc limit 10) b  "
+				+ "from temp_report group by 1 order by 2 desc limit 20) b  "
 				+ "where a.border = b.border "
-				+ "group by 1 order by 2 desc limit 10 ) x, "
+				+ "group by 1 order by 2 desc limit 20 ) x, "
 				+ "(select border ,sum(CANTIDAD) as CANTIDAD from temp_report  "
-				+ "group by 1 order by 2 desc limit 10) y where z.border=y.border "
+				+ "group by 1 order by 2 desc limit 20) y where z.border=y.border "
 				+ "and z.supplier = x.supplier group by 1,2;";	
 	try {
 		ResultSet rs = stmt.executeQuery(CustomPortQuery);
@@ -1146,18 +1433,21 @@ public void getMexicanByCustomPortQty() {
 	
 	public void getMexicanSupplierDollar() {
 		ArrayList<MexicanSupplierBean> beans = new ArrayList<MexicanSupplierBean>();
-		String mexicanSupplierQuery =  "select z.mexican_company,z.supplier,"
-				+ "sum(z.MONTO) as MONTO from temp_report z, "
+		String mexicanSupplierQuery =  "select z.mexican_company,"
+				+ "z.supplier,sum(z.MONTO) as MONTO "
+				+ "from temp_report z, "
 				+ "(select a.supplier ,sum(a.MONTO) as MONTO from temp_report a, "
 				+ "(select mexican_company ,sum(MONTO) as MONTO from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.mexican_company = b.mexican_company "
-				+ "group by 1 order by 2 desc limit 10 ) x,"
+				+ "group by 1 order by 2 desc limit 20 ) x, "
 				+ "(select mexican_company ,sum(MONTO) as MONTO "
 				+ "from temp_report "
-				+ "group by 1 order by 2 desc limit 10) y "
+				+ "group by 1 order by 2 desc limit 20) y "
 				+ "where z.mexican_company=y.mexican_company "
-				+ "and z.supplier = x.supplier group by 1,2;";	
+				+ "and z.supplier = x.supplier group by 1,2 ";
+
+	
 	try {
 		ResultSet rs = stmt.executeQuery(mexicanSupplierQuery );
 		while (rs.next()) {
@@ -1181,16 +1471,17 @@ public void getMexicanByCustomPortQty() {
 	
 	public void getMexicanSupplierQty() {
 		ArrayList<MexicanSupplierBean> beans = new ArrayList<MexicanSupplierBean>();
-		String mexicanSupplierQuery =  "select z.mexican_company,z.supplier,"
-				+ "sum(z.CANTIDAD) as CANTIDAD from temp_report z, "
+		String mexicanSupplierQuery = "select z.mexican_company "
+				+ ",z.supplier,sum(z.CANTIDAD) as CANTIDAD "
+				+ "from temp_report z, "
 				+ "(select a.supplier ,sum(a.CANTIDAD) as CANTIDAD from temp_report a, "
 				+ "(select mexican_company ,sum(CANTIDAD) as CANTIDAD from temp_report "
-				+ "group by 1 order by 2 desc limit 10) b  "
+				+ "group by 1 order by 2 desc limit 20) b  "
 				+ "where a.mexican_company = b.mexican_company "
-				+ "group by 1 order by 2 desc limit 10 ) x,"
+				+ "group by 1 order by 2 desc limit 20 ) x,"
 				+ "(select mexican_company ,sum(CANTIDAD) as CANTIDAD "
 				+ "from temp_report "
-				+ "group by 1 order by 2 desc limit 10) y "
+				+ "group by 1 order by 2 desc limit 20) y "
 				+ "where z.mexican_company=y.mexican_company "
 				+ "and z.supplier = x.supplier group by 1,2;";	
 	try {
@@ -1217,7 +1508,7 @@ public void getMexicanByCustomPortQty() {
 		//System.out.println("assignedSubReport()- "+reportId);
 		ArrayList<SubReportMap> subReportBeans = new ArrayList<SubReportMap>();
 		SubReportMap subReportBean;
-		try {
+	try {
 			ResultSet rs = stmt
 					.executeQuery("select * from report_subreport_mapping "
 							+ " where report_id = " + reportId);
@@ -1238,8 +1529,7 @@ public void getMexicanByCustomPortQty() {
 	public void populateSubReports(String reportId) {
 		ArrayList<SubReportMap> objSubMap;
 		objSubMap = getAssignedSubReports(reportId);
-		//System.out.println("SubReportMap  " + objSubMap);
-		/*
+		
 		for (int i = 0; i < objSubMap.size(); i++) {
 			if (objSubMap.get(i).getSubReportId() == 1) {
 				if (objSubMap.get(i).getTimeBy().equals("month")
@@ -1251,6 +1541,9 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getHSBySemDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getHSByYearDollar();
 				else if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getHSByMonthQty();
@@ -1260,6 +1553,9 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getHSBySemQty();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getHSByYearQty();
 			} else if (objSubMap.get(i).getSubReportId() == 2) {
 				if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
@@ -1270,6 +1566,9 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getMaxicanBySemDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getMaxicanByYearDollar();
 				else if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getMaxicanByMonthQty();
@@ -1279,7 +1578,35 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getMaxicanBySemQty();
-			} else if (objSubMap.get(i).getSubReportId() == 3) {
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getMaxicanByYearQty();
+			}else if (objSubMap.get(i).getSubReportId() == 3) {
+				if (objSubMap.get(i).getTimeBy().equals("month")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getForeignByMonthDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("quarter")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getForeignByQuarterDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("semester")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getForeignBySemDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getForeignByYearDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("month")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getForeignByMonthQuantity();
+				else if (objSubMap.get(i).getTimeBy().equals("quarter")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getForeignByQuarterQty();
+				else if (objSubMap.get(i).getTimeBy().equals("semester")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getForeignBySemQty();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getForeignByYearQty();
+			} else if (objSubMap.get(i).getSubReportId() == 4) {
 				if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getCustomsByMonthDollar();
@@ -1289,6 +1616,9 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getCustomsBySemDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getCustomsByYearDollar();
 				else if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getCustomsByMonthQty();
@@ -1298,7 +1628,28 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getCustomsBySemQty();
-			} else if (objSubMap.get(i).getSubReportId() == 4) {
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getCustomsByYearQty();
+			} else if (objSubMap.get(i).getSubReportId() == 5) {
+				if (objSubMap.get(i).getValueBy().equals("dollar"))
+					getMexicanByCustomPortDollar();
+				else if (objSubMap.get(i).getValueBy().equals("weight"))
+					getMexicanByCustomPortQty();
+				
+			}else if (objSubMap.get(i).getSubReportId() == 6) {
+				if (objSubMap.get(i).getValueBy().equals("dollar"))
+					getCustomPortDollar();
+				else if (objSubMap.get(i).getValueBy().equals("weight"))
+					getCustomPortQty();
+				
+			} else if (objSubMap.get(i).getSubReportId() == 7) {
+				if (objSubMap.get(i).getValueBy().equals("dollar"))
+					getMexicanSupplierDollar();
+				else if (objSubMap.get(i).getValueBy().equals("weight"))
+					getMexicanSupplierQty();
+				
+			}else if (objSubMap.get(i).getSubReportId() == 8) {
 				if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getCountryByMonthDollar();
@@ -1308,6 +1659,9 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("dollar"))
 					getCountryBySemDollar();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("dollar"))
+					getCountryByYearDollar();
 				else if (objSubMap.get(i).getTimeBy().equals("month")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getCountryByMonthQty();
@@ -1317,33 +1671,52 @@ public void getMexicanByCustomPortQty() {
 				else if (objSubMap.get(i).getTimeBy().equals("semester")
 						&& objSubMap.get(i).getValueBy().equals("weight"))
 					getCountryBySemQty();
+				else if (objSubMap.get(i).getTimeBy().equals("year")
+						&& objSubMap.get(i).getValueBy().equals("weight"))
+					getCountryByYearQty();
 			}
+		
 
-		}*/
+		}
+	
+		
+	/*
 		getHSByMonthDollar();
 		getHSByQuarterDollar();
 		getHSBySemDollar();
+		getHSByYearDollar();
 		getHSByMonthQty();
 		getHSByQuarterQty();
 		getHSBySemQty();
+		getHSByYearQty();
+			
 		getMaxicanByMonthDollar();
 		getMaxicanByQuarterDollar();
 		getMaxicanBySemDollar();
+		getMaxicanByYearDollar();
 		getMaxicanByMonthQty();
 		getMaxicanByQuarterQty();
 		getMaxicanBySemQty();
+		getMaxicanByYearQty();
+		
 		getCustomsByMonthDollar();
 		getCustomsByQuarterDollar();
 		getCustomsBySemDollar();
+		getCustomsByYearDollar();
 		getCustomsByMonthQty();
 		getCustomsByQuarterQty();
 		getCustomsBySemQty();
+		getCustomsByYearQty();
+		
 		getCountryByMonthDollar();
 		getCountryByQuarterDollar();
 		getCountryBySemDollar();
+		getCountryByYearDollar();
 		getCountryByMonthQty();
 		getCountryByQuarterQty();
 		getCountryBySemQty();
+		getCountryByYearQty();
+		
 		
 		getForeignByMonthDollar();
 		getForeignByQuarterDollar();
@@ -1351,12 +1724,29 @@ public void getMexicanByCustomPortQty() {
 		getForeignByMonthQuantity();
 		getForeignByQuarterQty();
 		getForeignBySemQty();
+		getForeignByYearDollar();
+		getForeignByYearQty();
+
 		getMexicanByCustomPortDollar();
 		getMexicanByCustomPortQty();
+		
 		getCustomPortDollar();
 		getCustomPortQty();
+		
 		getMexicanSupplierDollar();
 		getMexicanSupplierQty();
+		
+		*/	
+	
+	
+
+
+
+
+	
+		
+		
+		//System.out.println("bean size = "+masterBean.getCustomPortBean().size());
 		
 	}
 
@@ -1378,13 +1768,13 @@ public void getMexicanByCustomPortQty() {
 
 		ArrayList<MasterBean> masterBeans = new ArrayList<MasterBean>();
 		masterBeans.add(masterBean);
-
+		System.out.println("here" +masterBeans.size());
 		JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(
 				masterBeans);
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
-
-		parameters.put("subReportPath", subReportPath);
+		
+		parameters.put("subReportPath", subReportPath+"/");
 		try {
 			JasperPrint jasperPrint = JasperFillManager.fillReport(
 					sourceFileName, parameters, beanColDataSource);
